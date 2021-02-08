@@ -1,0 +1,21 @@
+section {
+  height: 100%;
+  position: relative;
+  display: flex;
+
+  #image {
+    background-position: top right;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 60%;
+    height: 100%;
+  }
+
+  article {
+    height: 100%;
+    width: 40%;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+  }
+}
