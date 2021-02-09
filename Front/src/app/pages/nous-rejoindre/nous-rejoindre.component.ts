@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 
 @Component({
   selector: 'nous-rejoindre',
@@ -8,10 +8,9 @@ import { Component, OnInit } from '@angular/core';
 export class NousRejoindreComponent implements OnInit {
   joinImg: string;
 
-  constructor() {}
+  constructor(private renderer: Renderer2) {}
 
   ngOnInit() {
     this.joinImg = './../../../assets/nous-rejoindre.jpg';
-    console.log(this.joinImg);
   }
 }

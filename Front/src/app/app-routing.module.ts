@@ -2,15 +2,16 @@ import { NousRejoindreComponent } from './pages/nous-rejoindre/nous-rejoindre.co
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
+import { HomeComponent } from './pages/home/home.component';
 
 const routes: Routes = [
   {
     path: '',
     children: [
-      // {
-      //   path: '',
-      //   component: HomeComponent,
-      // },
+      {
+        path: '',
+        component: HomeComponent,
+      },
       // {
       //   path: 'quezako',
       //   component: QuezakoComponent,

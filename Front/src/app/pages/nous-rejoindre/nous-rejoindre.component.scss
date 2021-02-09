@@ -3,18 +3,67 @@
 h1 {
   text-align: center;
 }
+
 p {
   text-align: center;
 }
 
-.creneaux {
+aside {
+  padding: 10vh 3vw 0;
+  @include tablet-portrait {
+    padding: 4vh 3vw;
+  }
+}
+
+.flex {
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
   text-align: center;
-  margin: 2rem 0;
+  flex-direction: row;
+
+  &:first-of-type {
+    padding: 4vh 2vw;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    div {
+      width: 100%;
+    }
+  }
 
   p span {
     color: #6f6f6f;
   }
+
+  + .flex {
+    align-items: stretch;
+    position: relative;
+    bottom: 0;
+    flex-direction: row;
+
+    @include phone-only {
+      flex-direction: column;
+    }
+  }
+  // img {
+  //   width: 85%;
+  // }
+
+  iframe {
+    width: 600px;
+    height: 400px;
+    @include tablet-landscape {
+      height: 300px;
+    }
+    @include phone-only {
+      width: 100%;
+      order: 2;
+    }
+  }
+}
+
+.yellow-background {
+  background-color: #e9c341;
+  display: flex;
+  align-items: center;
+  padding: 1rem;
 }
