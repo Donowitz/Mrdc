@@ -1,0 +1,21 @@
+<page-layout [pageContent]="mediasContent" [imgSrc]="mediasBgImg">
+  <ng-template #mediasContent>
+    <div class="flex">
+      <article>
+        <h1>ils parlent <br />de nous</h1>
+        <div class="primary-btn">
+          <a
+            href="https://www.youtube.com/watch?v=AuEZ95xbdvk&list=PLiOJwCfQxioUEzKMtN2uijLqoNUl1vjBd"
+            >À la télé</a
+          >
+        </div>
+        <aside>
+          <div *ngFor="let article of listeActicles" class="media">
+            <h3>{{ article.magazine }} :</h3>
+            <a href="{{ article.lien }}">{{ article.titre }}</a>
+          </div>
+        </aside>
+      </article>
+    </div>
+  </ng-template>
+</page-layout>

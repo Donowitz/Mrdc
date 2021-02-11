@@ -1,0 +1,40 @@
+@import "./../../app.component.scss";
+
+article {
+  width: 100%;
+  @include tablet-portrait {
+    padding-top: 5vh;
+  }
+  @include phone-only {
+    padding: 0;
+  }
+}
+
+aside {
+  overflow: auto;
+  max-height: 25rem;
+  @include tablet-portrait {
+    max-height: none;
+    overflow: hidden;
+    padding-bottom: 4vh;
+  }
+
+  div {
+    margin: 2rem 0;
+  }
+
+  h3 {
+    text-align: left;
+  }
+  a {
+    text-decoration: none;
+  }
+}
+
+.primary-btn {
+  width: 10rem;
+  margin-bottom: 3rem;
+  @include tablet-portrait {
+    margin-bottom: 1rem;
+  }
+}

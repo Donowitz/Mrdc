@@ -35,13 +35,6 @@ article {
     left: 5%;
     width: 90%;
   }
-
-  div:not(.primary-btn) {
-    border-left: solid #fff 1px;
-    width: 80%;
-    float: right;
-    padding: 1rem;
-  }
 }
 
 h1,
@@ -53,4 +46,11 @@ h1 {
 }
 p {
   padding-bottom: 2rem;
+}
+
+.primary-btn {
+  width: 17rem;
+  @include phone-only {
+    width: 10rem;
+  }
 }

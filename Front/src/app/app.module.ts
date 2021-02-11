@@ -1,3 +1,4 @@
+import { BackendModule } from './shared/services/backend.module';
 import { SharedComponentModule } from './components/sharedComponent.module';
 import { PageModule } from './pages/pages.module';
 import { BrowserModule } from '@angular/platform-browser';
@@ -17,6 +18,7 @@ import { CommonModule } from '@angular/common';
     BrowserAnimationsModule,
     SharedComponentModule,
     PageModule,
+    BackendModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

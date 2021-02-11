@@ -8,6 +8,7 @@ h1 {
   font-weight: 700;
   text-transform: uppercase;
   padding: 1rem 0;
+  line-height: 1.2;
   @include laptop {
     font-size: 2rem;
   }
@@ -21,7 +22,9 @@ h3 {
   }
 }
 p,
-li {
+li,
+a,
+button {
   font-weight: 300;
   font-size: 1.4rem;
   line-height: 1.1;
@@ -29,13 +32,38 @@ li {
     font-size: 1.2rem;
   }
 }
+a {
+  cursor: pointer;
+}
 .primary-btn {
   padding: 1rem 2rem;
   background-color: #009de4;
+  cursor: pointer;
   a {
     text-transform: uppercase;
     text-decoration: none;
     color: #fff;
     font-size: 1rem;
+    display: block;
+    text-align: center;
+    font-weight: 500;
   }
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 3vw;
+  overflow-x: hidden;
+  @include tablet-portrait {
+    align-items: flex-start;
+  }
+}
+
+.intro-container {
+  border-left: solid #fff 1px;
+  width: 80%;
+  float: right;
+  padding: 1rem;
 }

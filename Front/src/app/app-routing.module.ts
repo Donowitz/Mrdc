@@ -3,6 +3,10 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
+import { PartenariatComponent } from './pages/partenariat/partenariat.component';
+import { MediasComponent } from './pages/medias/medias.component';
+import { ContactComponent } from './pages/contact/contact.component';
+import { EquipesComponent } from './pages/equipes/equipes.component';
 
 const routes: Routes = [
   {
@@ -20,26 +24,26 @@ const routes: Routes = [
       //   path: 'le-club',
       //   component: ClubComponent,
       // },
-      // {
-      //   path: 'nos-equipes',
-      //   component: EquipesComponent,
-      // },
+      {
+        path: 'nos-equipes',
+        component: EquipesComponent,
+      },
       {
         path: 'nous-rejoindre',
         component: NousRejoindreComponent,
       },
-      // {
-      //   path: 'partenariat',
-      //   component: PartenariatComponent,
-      // },
-      // {
-      //   path: 'medias',
-      //   component: MediasComponent,
-      // },
-      // {
-      //   path: 'contact',
-      //   component: ContactComponent,
-      // },
+      {
+        path: 'partenariat',
+        component: PartenariatComponent,
+      },
+      {
+        path: 'medias',
+        component: MediasComponent,
+      },
+      {
+        path: 'contact',
+        component: ContactComponent,
+      },
     ],
   },
   // {

@@ -1,0 +1,96 @@
+@import "./../../app.component.scss";
+
+section {
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+article {
+  height: 100%;
+  scroll-snap-align: center;
+  display: flex;
+  align-items: center;
+  padding: 4vh 10vw;
+  position: relative;
+}
+
+div {
+  position: relative;
+  z-index: 1;
+}
+
+.team {
+  width: 70%;
+}
+
+.logo {
+  position: absolute;
+  z-index: 2;
+  width: 28%;
+  bottom: 0;
+}
+
+.blue-background {
+  background-color: rgba(0, 158, 225, 0.8);
+  padding: 3vw;
+  margin-top: -10vh;
+  width: 60%;
+}
+
+h1,
+p,
+a {
+  color: #fff;
+}
+
+h1 {
+  margin: 0;
+  font-size: 4rem;
+}
+
+a {
+  display: block;
+  margin: 1vh 0;
+}
+
+article:nth-child(even) {
+  .logo {
+    right: 58%;
+  }
+  .blue-background {
+    float: right;
+  }
+}
+
+article:nth-child(odd) {
+  img {
+    float: right;
+  }
+  .blue-background {
+    float: left;
+  }
+}
+
+scroll-icon {
+  position: absolute;
+  bottom: 0;
+  right: 1.5vw;
+}
+
+#mars-invaders {
+  .logo {
+    left: 60%;
+    bottom: -8vh;
+  }
+}
+
+#rascasses {
+  .logo {
+    right: 10%;
+  }
+  .blue-background {
+    padding-right: 4vw;
+  }
+}

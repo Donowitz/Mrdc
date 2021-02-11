@@ -11,7 +11,7 @@ p {
 aside {
   padding: 10vh 3vw 0;
   @include tablet-portrait {
-    padding: 4vh 3vw;
+    padding: 2vh 3vw 4vh;
   }
 }
 
@@ -19,6 +19,8 @@ aside {
   display: flex;
   text-align: center;
   flex-direction: row;
+  padding: 0;
+  height: auto;
 
   &:first-of-type {
     padding: 4vh 2vw;
@@ -51,8 +53,8 @@ aside {
   iframe {
     width: 600px;
     height: 400px;
-    @include tablet-landscape {
-      height: 300px;
+    @include laptop {
+      height: 250px;
     }
     @include phone-only {
       width: 100%;
@@ -66,4 +68,19 @@ aside {
   display: flex;
   align-items: center;
   padding: 1rem;
+}
+
+article {
+  width: 45%;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  overflow: auto;
+  @include tablet-landscape {
+    width: 55%;
+  }
+  @include tablet-portrait {
+    width: 100%;
+    position: relative;
+  }
 }
