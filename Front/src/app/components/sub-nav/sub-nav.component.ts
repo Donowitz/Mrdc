@@ -17,7 +17,7 @@ export class SubNavComponent implements OnInit {
 
   onClick(e: Event) {
     let eventElId = (<HTMLInputElement>e.target).id;
-    let eventElHtml = document.getElementById(eventElId).firstChild;
+    let eventElHtml = document.getElementById(eventElId);
 
     let circles = document.getElementsByTagName('circle');
     for (let index = 0; index < this.elementNumber; index++) {
