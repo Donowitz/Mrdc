@@ -1,4 +1,4 @@
-import { BackendModule } from './shared/services/backend.module';
+import { BackendModule } from './core/backend/backend.module';
 import { SharedComponentModule } from './components/sharedComponent.module';
 import { PageModule } from './pages/pages.module';
 import { BrowserModule } from '@angular/platform-browser';
