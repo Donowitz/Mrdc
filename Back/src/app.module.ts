@@ -1,3 +1,4 @@
+import { UsersModule } from './users/users.module';
 import { Teams } from './teams/teams.entity';
 import { TeamsModule } from './teams/teams.module';
 import { Module } from '@nestjs/common';
@@ -5,6 +6,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { Users } from './users/users.entity';
 
 @Module({
   imports: [
@@ -18,7 +20,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
         database: configService.get('DATABASE_NAME'),
         port: configService.get('DATABASE_PORT'),
 
-        entities: [Teams],
+        entities: [Teams, Users],
         synchronize: true,
       }),
       inject: [ConfigService],
@@ -30,6 +32,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
       envFilePath: `${process.env.NODE_ENV || 'development'}.env`,
     }),
     TeamsModule,
+    UsersModule,
   ],
   controllers: [AppController],
   providers: [AppService],

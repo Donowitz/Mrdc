@@ -1,4 +1,4 @@
-import { EquipesComponent } from './equipes/equipes.component';
+import { AppTeamsComponent } from './teams/teams.component';
 import { ContactComponent } from './contact/contact.component';
 import { CommonModule } from '@angular/common';
 import { MediasComponent } from './medias/medias.component';
@@ -25,7 +25,7 @@ import { BackendModule } from '../shared/services/backend.module';
     PartenariatComponent,
     MediasComponent,
     ContactComponent,
-    EquipesComponent,
+    AppTeamsComponent,
   ],
   providers: [],
 })

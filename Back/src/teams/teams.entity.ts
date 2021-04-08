@@ -22,6 +22,11 @@ export class Teams {
   // public teamPicture: string;
 
   @Column({
+    nullable: false,
+  })
+  public flatTrackUrl: string;
+
+  @Column({
     default: true,
     nullable: false,
   })

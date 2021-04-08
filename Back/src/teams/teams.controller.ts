@@ -1,4 +1,4 @@
-import { TeamsDto } from '../shared/models/dto/teamsDto';
+import { TeamDto, CreateTeamDto } from '../shared/models/dto/teamsDto';
 import {
   Controller,
   Get,
@@ -16,28 +16,31 @@ import { UpdateResult } from 'typeorm';
 export class TeamsController {
   constructor(private teamsService: TeamsService) {}
 
-  // @Get(':id')
-  // getOfficeById(@Param('id') id: string): Promise<OfficeDto> {
-  //   return this.officeService.getOffice(id);
-  // }
-
   @Get()
-  async getAllTeams(): Promise<TeamsDto[]> {
+  async getAllTeams(): Promise<TeamDto[]> {
     return this.teamsService.getAllTeams();
   }
 
-  // @Post()
-  // createOffice(@Body() office: CreateOfficeDto): Promise<OfficeDto> {
-  //   return this.officeService.createOffice(office);
-  // }
+  @Get(':teamId')
+  getOneTeam(@Param(':teamId') teamId: string): Promise<TeamDto> {
+    return this.teamsService.getOneTeam(teamId);
+  }
 
-  // @Put(':id')
-  // updateOffice(@Param('id') id: string, @Body() office: OfficeDto): Promise<UpdateResult> {
-  //   return this.officeService.updateOffice(id, office);
-  // }
+  @Post()
+  async createTeam(@Body() team: CreateTeamDto): Promise<TeamDto> {
+    return this.teamsService.createTeam(team);
+  }
 
-  // @Delete()
-  // deleteClassName_singular(@Param('id') id: string) {
-  //   this.officeService.deleteOffice(id);
-  // }
+  @Put(':teamId')
+  updateTeam(
+    @Param('teamId') teamId: string,
+    @Body() team: CreateTeamDto,
+  ): Promise<UpdateResult> {
+    return this.teamsService.updateTeam(teamId, team);
+  }
+
+  @Delete(':teamId')
+  deleteTeam(@Param('teamId') teamId: string) {
+    this.teamsService.deleteTeam(teamId);
+  }
 }

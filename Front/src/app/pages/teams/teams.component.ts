@@ -1,4 +1,5 @@
-import { AnimationService } from './../../shared/services/animation.service';
+import { TeamsService } from 'src/app/core/backend/services/teams.service';
+import { AnimationService } from '../../shared/services/animation.service';
 import {
   AfterViewInit,
   Component,
@@ -6,22 +7,21 @@ import {
   OnInit,
   Renderer2,
 } from '@angular/core';
-import { TeamsService } from 'src/app/core/backend/services/equipes.service';
 import { Observable } from 'rxjs';
-import { TeamsDto } from '../../../../../Back/src/shared/models/dto/teamsDto';
+import { TeamDto } from '../../../../../Back/src/shared/models/dto/teamsDto';
 import { tap } from 'rxjs/operators';
 
 @Component({
-  selector: 'equipes',
-  templateUrl: 'equipes.component.html',
-  styleUrls: ['./equipes.component.scss'],
+  selector: 'teams',
+  templateUrl: 'teams.component.html',
+  styleUrls: ['./teams.component.scss'],
 })
-export class EquipesComponent implements OnInit, AfterViewInit {
+export class AppTeamsComponent implements OnInit, AfterViewInit {
   equipeMenu: any[];
   equipeRoute: string;
   lastSection: HTMLElement;
   showScroll = true;
-  teams$: Observable<TeamsDto[]>;
+  teams$: Observable<TeamDto[]>;
 
   @HostListener('window:scroll') onWindowScroll(): void {
     console.log(window.scrollY);

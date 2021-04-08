@@ -5,7 +5,10 @@
     [elementNumber]="4"
   ></sub-nav>
   <scroll-icon *ngIf="showScroll"></scroll-icon>
-  <article id="{{ equipeMenu[0].ancre }}">
+  <article
+    id="{{ equipeMenu[i].ancre }}"
+    *ngFor="let team of teams; let i = index"
+  >
     <div>
       <img
         src="./../../../assets/equipes/bloodys.jpg"
@@ -18,24 +21,17 @@
           alt="Logo Bloody Skulls"
           class="logo"
         />
-        <h1>Bloody skulls</h1>
+        <h1>{{ team.teamName }}</h1>
         <div class="intro-container">
-          <p>
-            La première équipe crée en 2011. Elle integre le Championnat de
-            France en 2015 lors de sa création. Alors classée 13ème équipe
-            Française, elle intègre la Nationale 1 au côté des All Blocks
-            (Mérignac), le DCCLM (Montpellier) et la Horder (Orcet). Encore
-            présente en championnat, elle joue aussi des matchs internationnaux
-            pour se challenger chaque année.
-          </p>
-          <a href="http://flattrackstats.com/teams/11050"
-            >Tous les résultats des Bloody Skulls ></a
+          <p>{{ team.teamStory }}</p>
+          <a href="{{ team.flatTrackUrl }}"
+            >Tous les résultats des {{ team.teamName }} ></a
           >
         </div>
       </div>
     </div>
   </article>
-  <article id="{{ equipeMenu[1].ancre }}">
+  <!-- <article id="{{ equipeMenu[1].ancre }}">
     <div>
       <img
         src="./../../../assets/equipes/mars.jpg"
@@ -124,5 +120,5 @@
         </div>
       </div>
     </div>
-  </article>
+  </article> -->
 </section>

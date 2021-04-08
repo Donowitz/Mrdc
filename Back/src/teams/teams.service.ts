@@ -1,4 +1,4 @@
-import { TeamsDto } from '../shared/models/dto/teamsDto';
+import { TeamDto, CreateTeamDto } from '../shared/models/dto/teamsDto';
 import { Observable, from } from 'rxjs';
 import { Injectable } from '@nestjs/common';
 import { Teams } from './teams.entity';
@@ -12,23 +12,23 @@ export class TeamsService {
     private teamRepository: Repository<Teams>,
   ) {}
 
-  // getOffice(officeId: string): Promise<Office> {
-  //   return this.officeRepository.findOne(officeId);
-  // }
-
   getAllTeams(): Promise<Teams[]> {
     return this.teamRepository.find();
   }
 
-  // createOffice(office: CreateOfficeDto): Promise<Office> {
-  //   return this.officeRepository.save(office);
-  // }
+  getOneTeam(teamId: string): Promise<Teams> {
+    return this.teamRepository.findOne(teamId);
+  }
 
-  // updateOffice(officeId: string, office: OfficeDto): Promise<UpdateResult> {
-  //   return this.officeRepository.update(officeId, office);
-  // }
+  createTeam(team: CreateTeamDto): Promise<Teams> {
+    return this.teamRepository.save(team);
+  }
 
-  // deleteOffice(officeId: string): Promise<DeleteResult> {
-  //   return this.officeRepository.delete(officeId);
-  // }
+  updateTeam(teamId: string, team: CreateTeamDto): Promise<UpdateResult> {
+    return this.teamRepository.update(teamId, team);
+  }
+
+  deleteTeam(teamId: string): Promise<DeleteResult> {
+    return this.teamRepository.delete(teamId);
+  }
 }
