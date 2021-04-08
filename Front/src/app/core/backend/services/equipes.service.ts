@@ -1,3 +1,4 @@
+import { TeamsDto } from './../../../../../../Back/src/shared/models/dto/teamsDto';
 import { Injectable } from '@angular/core';
 import { HttpService } from '../http.service';
 
@@ -8,10 +9,10 @@ import { catchError, map } from 'rxjs/operators';
 export class TeamsService {
   constructor(private readonly api: HttpService) {}
 
-  ///private readonly apiController = 'teams';
+  private readonly apiController = 'teams';
 
   // GET
-  getAllTeams() {
-    return this.api.get(`teams`);
+  getAllTeams(): Observable<TeamsDto[]> {
+    return this.api.get(`${this.apiController}`);
   }
 }

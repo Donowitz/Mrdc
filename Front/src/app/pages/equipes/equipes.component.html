@@ -1,4 +1,4 @@
-<section>
+<section *ngIf="teams$ | async as teams">
   <sub-nav
     [menu]="equipeMenu"
     [route]="equipeRoute"

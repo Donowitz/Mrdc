@@ -7,6 +7,9 @@ import {
   Renderer2,
 } from '@angular/core';
 import { TeamsService } from 'src/app/core/backend/services/equipes.service';
+import { Observable } from 'rxjs';
+import { TeamsDto } from '../../../../../Back/src/shared/models/dto/teamsDto';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'equipes',
@@ -18,7 +21,7 @@ export class EquipesComponent implements OnInit, AfterViewInit {
   equipeRoute: string;
   lastSection: HTMLElement;
   showScroll = true;
-  teams;
+  teams$: Observable<TeamsDto[]>;
 
   @HostListener('window:scroll') onWindowScroll(): void {
     console.log(window.scrollY);
@@ -57,11 +60,9 @@ export class EquipesComponent implements OnInit, AfterViewInit {
       },
     ];
 
-    this.teamsService.getAllTeams().subscribe((res) => {
-      this.teams = res;
-      console.log(res);
-    });
-    console.log(typeof this.teams);
+    this.teams$ = this.teamsService
+      .getAllTeams()
+      .pipe(tap((res) => console.log(res)));
   }
 
   ngAfterViewInit() {
