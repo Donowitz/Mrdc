@@ -1,3 +1,4 @@
+import { TeamsService } from './services/equipes.service';
 import { HttpService } from './http.service';
 import { NgModule } from '@angular/core';
 
@@ -5,6 +6,6 @@ import { NgModule } from '@angular/core';
   imports: [],
   exports: [],
   declarations: [],
-  providers: [HttpService],
+  providers: [HttpService, TeamsService],
 })
 export class BackendModule {}

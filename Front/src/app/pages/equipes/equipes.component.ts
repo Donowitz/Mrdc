@@ -6,6 +6,7 @@ import {
   OnInit,
   Renderer2,
 } from '@angular/core';
+import { TeamsService } from 'src/app/core/backend/services/equipes.service';
 
 @Component({
   selector: 'equipes',
@@ -17,6 +18,7 @@ export class EquipesComponent implements OnInit, AfterViewInit {
   equipeRoute: string;
   lastSection: HTMLElement;
   showScroll = true;
+  teams;
 
   @HostListener('window:scroll') onWindowScroll(): void {
     console.log(window.scrollY);
@@ -29,7 +31,10 @@ export class EquipesComponent implements OnInit, AfterViewInit {
     }
   }
 
-  constructor(private animationService: AnimationService) {}
+  constructor(
+    private animationService: AnimationService,
+    private teamsService: TeamsService
+  ) {}
 
   ngOnInit() {
     this.equipeRoute = '/nos-equipes';
@@ -51,6 +56,12 @@ export class EquipesComponent implements OnInit, AfterViewInit {
         nom: 'Rascasses',
       },
     ];
+
+    this.teamsService.getAllTeams().subscribe((res) => {
+      this.teams = res;
+      console.log(res);
+    });
+    console.log(typeof this.teams);
   }
 
   ngAfterViewInit() {
