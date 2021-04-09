@@ -1,3 +1,4 @@
+import { AuthModule } from './core/auth/auth.module';
 import { BackendModule } from './core/backend/backend.module';
 import { SharedComponentModule } from './components/sharedComponent.module';
 import { PageModule } from './pages/pages.module';
@@ -8,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
+import { NebularModule } from './shared/nebular.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,6 +21,8 @@ import { CommonModule } from '@angular/common';
     SharedComponentModule,
     PageModule,
     BackendModule,
+    AuthModule,
+    NebularModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

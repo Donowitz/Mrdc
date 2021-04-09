@@ -1,0 +1,24 @@
+@import '../auth.scss';
+form {
+  div:nth-child(3),
+  nb-checkbox,
+  div > input {
+    display: block;
+  }
+  div > input {
+    margin: 1rem auto;
+    padding: 1rem 1.5rem;
+    border-radius: 5px;
+    border: solid 1px #ccc;
+    text-align: left;
+  }
+  [nbButton].appearance-filled.status-success {
+    width: 40%;
+  }
+}
+div a {
+  margin-top: 1rem;
+}
+section a {
+  margin-bottom: 5rem;
+}

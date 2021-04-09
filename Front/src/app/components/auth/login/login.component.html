@@ -1,0 +1,85 @@
+<img src="../../../../assets/dazzboard_logo.png" alt="DAZZ Board" />
+<p class="sub-title">Heureux de vous revoir parmis nous</p>
+
+<nb-alert
+  *ngIf="showMessages.error && errors?.length && !submitted"
+  outline="danger"
+  role="alert"
+>
+  <p class="alert-title"><b>Oh snap!</b></p>
+  <ul class="alert-message-list">
+    <li *ngFor="let error of errors" class="alert-message">{{ error }}</li>
+  </ul>
+</nb-alert>
+
+<form (ngSubmit)="login()" #form="ngForm" aria-labelledby="title">
+  <div>
+    <input
+      nbInput
+      [(ngModel)]="user.email"
+      #email="ngModel"
+      name="email"
+      id="input-email"
+      pattern=".+@.+\..+"
+      placeholder="Email"
+      autofocus
+      [status]="email.dirty ? (email.invalid ? 'danger' : 'success') : ''"
+      [required]="getConfigValue('forms.validation.email.required')"
+      [attr.aria-invalid]="email.invalid && email.touched ? true : null"
+    />
+    <ng-container *ngIf="email.invalid && email.touched">
+      <p class="error-message" *ngIf="email.errors?.required">Email requis!</p>
+      <p class="error-message" *ngIf="email.errors?.pattern">
+        <nb-icon icon="alert-circle-outline"></nb-icon> L'email n'est pas valide
+      </p>
+    </ng-container>
+  </div>
+
+  <div>
+    <input
+      nbInput
+      [(ngModel)]="user.password"
+      #password="ngModel"
+      name="password"
+      type="password"
+      id="input-password"
+      placeholder="Mot de passe"
+      [status]="password.dirty ? (password.invalid ? 'danger' : 'success') : ''"
+      [required]="getConfigValue('forms.validation.password.required')"
+      [minlength]="getConfigValue('forms.validation.password.minLength')"
+      [maxlength]="getConfigValue('forms.validation.password.maxLength')"
+      [attr.aria-invalid]="password.invalid && password.touched ? true : null"
+    />
+    <ng-container *ngIf="password.invalid && password.touched">
+      <p class="error-message" *ngIf="password.errors?.required">
+        <nb-icon icon="alert-circle-outline"></nb-icon> Mot de passe requis
+      </p>
+    </ng-container>
+  </div>
+
+  <div>
+    <nb-checkbox
+      name="rememberMe"
+      [(ngModel)]="user.rememberMe"
+      *ngIf="rememberMe"
+      >Se rappeler de moi</nb-checkbox
+    >
+    <a routerLink="../request-password">Oups, mot de passe oublié ?</a>
+  </div>
+
+  <button
+    class="submit"
+    nbButton
+    shape="semi-round"
+    status="success"
+    [disabled]="submitted || !form.valid"
+    [class.btn-pulse]="submitted"
+  >
+    S'identifier
+  </button>
+</form>
+
+<section aria-label="Register">
+  <p>Première visite ?</p>
+  <a routerLink="../register">Inscrivez-vous maintenant</a>
+</section>

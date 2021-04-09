@@ -1,0 +1,54 @@
+img {
+  display: block;
+  margin: 0 auto 2rem;
+  width: 38%;
+}
+h1,
+h2,
+p {
+  margin: 0;
+  text-align: center;
+}
+h1 {
+  color: #ca43f6;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+}
+h2 {
+  color: #ca43f6;
+  font-size: 1.2rem;
+}
+nb-alert.outline-danger {
+  margin: 2rem auto;
+  width: 70%;
+  text-align: center;
+}
+p,
+nb-checkbox,
+a {
+  display: block;
+  text-align: center;
+}
+p.error-message {
+  color: #b11f1f;
+  text-align: left;
+}
+label {
+  display: block;
+  margin: 1.5rem 0;
+  color: #ccc;
+}
+form [nbButton].appearance-filled.status-success {
+  display: block;
+  margin: 2rem auto 5rem;
+}
+a {
+  text-decoration: none;
+}
+div a,
+section a {
+  color: #a9a9a9;
+}
+.pointer {
+  cursor: pointer;
+}
