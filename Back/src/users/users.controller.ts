@@ -25,6 +25,11 @@ export class UsersController {
     return this.usersService.getOneUser(userId);
   }
 
+  @Get('byMail/:email')
+  async getUserByEmail(@Param('email') email): Promise<UserDto> {
+    return this.usersService.getUserByEmail(email);
+  }
+
   @Post()
   async createUser(@Body() user: CreateUserDto): Promise<UserDto> {
     return this.usersService.createUser(user);

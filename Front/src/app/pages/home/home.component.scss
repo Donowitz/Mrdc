@@ -26,6 +26,9 @@ article {
   top: 55%;
   width: 50%;
 
+  @include laptop {
+    top: 40%;
+  }
   @include tablet-landscape {
     width: 70%;
     left: 28%;

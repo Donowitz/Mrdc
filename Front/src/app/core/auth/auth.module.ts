@@ -5,16 +5,31 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
-import { AppAuthRoutingModule } from './auth-routing.module';
-import { NbAuthModule } from '@nebular/auth';
+import { NbAuthModule, NbPasswordAuthStrategy } from '@nebular/auth';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     RouterModule,
-    AppAuthRoutingModule,
-    NbAuthModule,
+    NbAuthModule.forRoot({
+      strategies: [
+        NbPasswordAuthStrategy.setup({
+          name: 'email',
+          baseEndpoint: '',
+          login: {
+            // ...
+            endpoint: '/auth/login',
+            method: 'post',
+          },
+          //       // redirect: {
+          //       //   success: '', // welcome page path
+          //       //   failure: null, // stay on the same page
+          //       // },
+        }),
+      ],
+      forms: {},
+    }),
     NebularModule,
     ReactiveFormsModule,
   ],

@@ -12,7 +12,7 @@ import {
   styleUrls: ['nous-rejoindre.component.scss'],
 })
 export class NousRejoindreComponent implements OnInit, AfterViewInit {
-  joinImg: string;
+  joinImg = './../../../assets/nous-rejoindre.jpg';
   article: HTMLElement;
 
   @HostListener('window:resize', ['$event'])
@@ -27,12 +27,11 @@ export class NousRejoindreComponent implements OnInit, AfterViewInit {
   constructor(private renderer: Renderer2) {}
 
   ngOnInit() {
-    this.joinImg = './../../../assets/nous-rejoindre.jpg';
+    //this.joinImg = './../../../assets/nous-rejoindre.jpg';
   }
 
   ngAfterViewInit() {
     this.article = document.getElementById('articleContainer');
-    console.log(this.article);
     if (window.outerHeight < 600) {
       this.renderer.setStyle(this.article, 'height', '100%');
     } else {

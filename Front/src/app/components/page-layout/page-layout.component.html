@@ -1,5 +1,8 @@
 <section>
-  <div id="image"></div>
+  <div
+    [ngStyle]="{ 'background-image': 'url(' + imgSrc + ')' }"
+    class="bg-img"
+  ></div>
   <div id="container">
     <ng-container *ngTemplateOutlet="pageContent"></ng-container>
   </div>

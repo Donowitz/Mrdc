@@ -1,0 +1,23 @@
+<div class="main-nav">
+  <span [ngStyle]="{ color: menuColor }">Menu</span>
+  <div
+    id="hamburger-icon"
+    [ngClass]="toggleMenu ? 'active' : ''"
+    (click)="toggleMenu = !toggleMenu"
+  >
+    <i [ngStyle]="{ 'background-color': toggleMenu ? '' : menuColor }"></i
+    ><i [ngStyle]="{ 'background-color': toggleMenu ? '' : menuColor }"></i
+    ><i [ngStyle]="{ 'background-color': toggleMenu ? '' : menuColor }"></i>
+  </div>
+</div>
+<section [ngClass]="toggleMenu ? 'open' : ''">
+  <nav>
+    <a
+      routerLinkActive="active-route"
+      [routerLink]="link.route"
+      (click)="indexRouteSelected = i; toggleMenu = !toggleMenu"
+      *ngFor="let link of routeArray; let i = index"
+      >{{ link.name }}</a
+    >
+  </nav>
+</section>

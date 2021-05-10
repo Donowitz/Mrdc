@@ -52,10 +52,7 @@ aside {
 
   iframe {
     width: 600px;
-    height: 400px;
-    @include laptop {
-      height: 250px;
-    }
+    height: auto;
     @include phone-only {
       width: 100%;
       order: 2;
@@ -71,16 +68,5 @@ aside {
 }
 
 article {
-  width: 45%;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  overflow: auto;
-  @include tablet-landscape {
-    width: 55%;
-  }
-  @include tablet-portrait {
-    width: 100%;
-    position: relative;
-  }
+  margin-top: auto;
 }

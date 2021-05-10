@@ -1,5 +1,4 @@
 import { map, tap, mergeMap } from 'rxjs/operators';
-import { NbAuthService } from '@nebular/auth';
 import { Injectable } from '@angular/core';
 import {
   ActivatedRoute,
@@ -15,7 +14,7 @@ export class ResetPasswordGuard implements CanActivate {
   constructor(
     private readonly router: ActivatedRoute,
     private readonly authService: AuthService
-  ) { }
+  ) {}
 
   canActivate(route: ActivatedRouteSnapshot): Observable<boolean> {
     return this.authService.canResetPassword(

@@ -13,7 +13,11 @@ export class TeamsService {
   ) {}
 
   getAllTeams(): Promise<Teams[]> {
-    return this.teamRepository.find();
+    return this.teamRepository.find({
+      order: {
+        order: 'ASC',
+      },
+    });
   }
 
   getOneTeam(teamId: string): Promise<Teams> {

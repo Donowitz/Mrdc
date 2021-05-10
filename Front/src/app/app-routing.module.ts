@@ -1,13 +1,14 @@
 import { NousRejoindreComponent } from './pages/nous-rejoindre/nous-rejoindre.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AppComponent } from './app.component';
-import { AppHomeComponent } from './pages/home/home.component';
+import { HomeComponent } from './pages/home/home.component';
 import { PartenariatComponent } from './pages/partenariat/partenariat.component';
 import { MediasComponent } from './pages/medias/medias.component';
 import { ContactComponent } from './pages/contact/contact.component';
-import { AppTeamsComponent } from './pages/teams/teams.component';
+import { TeamsComponent } from './pages/teams/teams.component';
 import { AppLoginComponent } from './components/auth/login/login.component';
+import { NbAuthComponent } from '@nebular/auth';
+import { QuezakoComponent } from './pages/quezako/quezako.component';
 
 const routes: Routes = [
   {
@@ -15,19 +16,19 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: AppHomeComponent,
+        component: HomeComponent,
       },
-      // {
-      //   path: 'quezako',
-      //   component: QuezakoComponent,
-      // },
+      {
+        path: 'quezako',
+        component: QuezakoComponent,
+      },
       // {
       //   path: 'le-club',
       //   component: ClubComponent,
       // },
       {
         path: 'nos-equipes',
-        component: AppTeamsComponent,
+        component: TeamsComponent,
       },
       {
         path: 'nous-rejoindre',
@@ -49,6 +50,7 @@ const routes: Routes = [
   },
   {
     path: 'auth',
+    component: NbAuthComponent,
     children: [
       {
         path: 'login',
@@ -76,7 +78,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

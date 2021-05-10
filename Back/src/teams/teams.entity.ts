@@ -11,7 +11,8 @@ export class Teams {
   public teamName: string;
 
   @Column({
-    nullable: false,
+    nullable: true,
+    length: 500,
   })
   public teamStory: string;
 
@@ -20,6 +21,8 @@ export class Teams {
 
   // @Column()
   // public teamPicture: string;
+  @Column({ type: 'int' })
+  public order: number;
 
   @Column({
     nullable: false,

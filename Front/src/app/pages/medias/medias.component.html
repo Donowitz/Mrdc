@@ -6,13 +6,16 @@
         <div class="primary-btn">
           <a
             href="https://www.youtube.com/watch?v=AuEZ95xbdvk&list=PLiOJwCfQxioUEzKMtN2uijLqoNUl1vjBd"
-            >À la télé</a
+            target="_blank"
+            >En vidéo</a
           >
         </div>
         <aside>
-          <div *ngFor="let article of listeActicles" class="media">
+          <div *ngFor="let article of articles" class="media">
             <h3>{{ article.magazine }} :</h3>
-            <a href="{{ article.lien }}">{{ article.titre }}</a>
+            <a href="{{ article.url }}" target="_blank">{{
+              article.articleTitle
+            }}</a>
           </div>
         </aside>
       </article>

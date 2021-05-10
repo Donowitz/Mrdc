@@ -1,6 +1,11 @@
 @import "./shared/scss/mixin.scss";
+@import "../themes.scss";
 
-main {
+* {
+  font-family: "Josefin Sans", "Roboto", sans-serif;
+}
+
+html {
   background-color: #f8f8f8;
 }
 h1 {
@@ -34,6 +39,7 @@ button {
 }
 a {
   cursor: pointer;
+  margin: 0;
 }
 .primary-btn {
   padding: 1rem 2rem;
@@ -63,7 +69,63 @@ a {
 
 .intro-container {
   border-left: solid #fff 1px;
-  width: 80%;
+  width: 88%;
   float: right;
-  padding: 1rem;
+  padding: 0 1rem;
+}
+
+.error-msg {
+  color: #ba2020;
+  font-style: italic;
+  font-size: 1rem;
+}
+
+.head {
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  z-index: 5;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1rem;
+  align-items: center;
+  a {
+    z-index: 10;
+    img {
+      width: 15%;
+      @include phone-only {
+        width: 25%;
+      }
+    }
+  }
+}
+
+ul {
+  position: fixed;
+  z-index: 5;
+  list-style: none;
+  top: 45%;
+  width: 10%;
+  @include tablet-portrait {
+    width: 40%;
+    text-align: right;
+    top: 2.5rem;
+    margin: 0;
+    padding: 0;
+    right: 3rem;
+  }
+  li {
+    margin: 1rem 0;
+    @include tablet-portrait {
+      display: inline-block;
+      padding: 0 1rem;
+    }
+    @include phone-only {
+      margin: 0;
+    }
+    a {
+      text-decoration: none;
+      margin: 1rem auto;
+    }
+  }
 }

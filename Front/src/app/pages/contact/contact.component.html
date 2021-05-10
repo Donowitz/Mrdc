@@ -34,16 +34,13 @@
                 (form.get('name').dirty || form.get('name').touched)
               "
             >
-              <p class="error-message" *ngIf="form.get('name').errors.required">
-                <span class="material-icons"> error_outline </span> Et c'est
-                quoi votre petit nom ?
+              <p class="error-msg" *ngIf="form.get('name').errors.required">
+                <nb-icon icon="alert-circle-outline"></nb-icon> Et c'est quoi
+                votre petit nom ?
               </p>
-              <p
-                class="error-message"
-                *ngIf="form.get('name').errors.minlength"
-              >
-                <span class="material-icons"> error_outline </span> Le derby
-                name doit contenir au moins 3 caractères.
+              <p class="error-msg" *ngIf="form.get('name').errors.minlength">
+                <nb-icon icon="alert-circle-outline"></nb-icon> Le derby name
+                doit contenir au moins 3 caractères.
               </p>
             </ng-container>
           </div>
@@ -61,19 +58,13 @@
                 (form.get('email').dirty || form.get('email').touched)
               "
             >
-              <p
-                class="error-message"
-                *ngIf="form.get('email').errors.required"
-              >
-                <span class="material-icons"> error_outline </span> Ton email
-                est requis.
+              <p class="error-msg" *ngIf="form.get('email').errors.required">
+                <nb-icon icon="alert-circle-outline"></nb-icon> Ton email est
+                requis.
               </p>
-              <p
-                class="error-message"
-                *ngIf="form.get('email').errors?.pattern"
-              >
-                <span class="material-icons"> error_outline </span> L'email
-                n'est pas valide.
+              <p class="error-msg" *ngIf="form.get('email').errors?.pattern">
+                <nb-icon icon="alert-circle-outline"></nb-icon> L'email n'est
+                pas valide.
               </p>
             </ng-container>
           </div>
@@ -91,19 +82,13 @@
                 (form.get('message').dirty || form.get('name').touched)
               "
             >
-              <p
-                class="error-message"
-                *ngIf="form.get('message').errors.required"
-              >
-                <span class="material-icons"> error_outline </span> Tu n'as rien
-                à nous dire ?
+              <p class="error-msg" *ngIf="form.get('message').errors.required">
+                <nb-icon icon="alert-circle-outline"></nb-icon> Tu n'as rien à
+                nous dire ?
               </p>
-              <p
-                class="error-message"
-                *ngIf="form.get('message').errors.minlength"
-              >
-                <span class="material-icons"> error_outline </span> Ton petit
-                mot est trop court...
+              <p class="error-msg" *ngIf="form.get('message').errors.minlength">
+                <nb-icon icon="alert-circle-outline"></nb-icon> Ton petit mot
+                est trop court...
               </p>
             </ng-container>
           </div>
@@ -113,7 +98,7 @@
             id="submit"
             class="primary-btn"
           >
-            Go ! <span class="material-icons"> send </span>
+            Go ! <nb-icon icon="paper-plane-outline"></nb-icon>
           </button>
         </form>
       </article>

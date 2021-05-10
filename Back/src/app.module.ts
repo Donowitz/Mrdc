@@ -1,3 +1,5 @@
+import { Medias } from './medias/medias.entity';
+import { MediasModule } from './medias/medias.module';
 import { UsersModule } from './users/users.module';
 import { Teams } from './teams/teams.entity';
 import { TeamsModule } from './teams/teams.module';
@@ -20,7 +22,7 @@ import { Users } from './users/users.entity';
         database: configService.get('DATABASE_NAME'),
         port: configService.get('DATABASE_PORT'),
 
-        entities: [Teams, Users],
+        entities: [Teams, Users, Medias],
         synchronize: true,
       }),
       inject: [ConfigService],
@@ -33,6 +35,7 @@ import { Users } from './users/users.entity';
     }),
     TeamsModule,
     UsersModule,
+    MediasModule,
   ],
   controllers: [AppController],
   providers: [AppService],

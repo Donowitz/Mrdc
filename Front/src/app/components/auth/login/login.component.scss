@@ -1,24 +1,39 @@
-@import '../auth.scss';
 form {
-  div:nth-child(3),
-  nb-checkbox,
-  div > input {
-    display: block;
+  text-align: center;
+}
+
+input {
+  display: block;
+  margin: 1rem auto;
+  padding: 1rem 1.5rem;
+  background-color: aliceblue;
+}
+
+.error-msg {
+  text-align: center;
+}
+
+nb-alert {
+  padding: 0.3rem 0;
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
   }
-  div > input {
+  li {
+    text-align: center;
     margin: 1rem auto;
-    padding: 1rem 1.5rem;
-    border-radius: 5px;
-    border: solid 1px #ccc;
-    text-align: left;
-  }
-  [nbButton].appearance-filled.status-success {
-    width: 40%;
   }
 }
-div a {
-  margin-top: 1rem;
+
+a {
+  text-align: center;
+  color: rgb(177, 177, 177);
+  text-decoration: none;
+  display: block;
+  margin-top: 4rem;
 }
-section a {
-  margin-bottom: 5rem;
+
+[nbButton] {
+  margin: 1rem auto;
 }

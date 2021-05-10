@@ -5,7 +5,7 @@ import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 @Component({
   selector: 'contact',
   templateUrl: 'contact.component.html',
-  styleUrls: ['./contact.component.scss'],
+  styleUrls: ['./contact.component.scss', '../../app.component.scss'],
 })
 export class ContactComponent implements OnInit {
   contactBgImg: string;

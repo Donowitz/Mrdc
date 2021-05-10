@@ -1,10 +1,12 @@
 @import "./../../app.component.scss";
 
 section {
-  height: 100vh;
+  height: 85vh;
+  display: block;
   overflow-y: scroll;
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
+  margin-top: 15vh;
 }
 
 article {
@@ -12,27 +14,59 @@ article {
   scroll-snap-align: center;
   display: flex;
   align-items: center;
-  padding: 0 10vw;
+  padding: 0 5rem 2rem;
+  overflow: auto;
   position: relative;
-}
 
-div {
-  position: relative;
-  z-index: 1;
+  @include tablet-portrait {
+    padding: 0 2rem;
+  }
+  @include phone-only {
+    padding: 0 1rem 2rem;
+    align-items: flex-start;
+  }
+
+  // > div {
+  //   margin: 0 auto;
+  // }
 }
 
 .team {
-  width: 70%;
+  //display: block;
+  height: 50vh;
   @include small-laptop {
-    width: 60%;
+    height: 55vh;
+  }
+  @include tablet-portrait {
+    width: 100%;
+    height: auto;
   }
 }
 
 .blue-background {
   background-color: rgba(0, 158, 225, 0.8);
-  padding: 3vw;
-  margin-top: -10vh;
+  padding: 1.2rem;
   width: 60%;
+  max-width: 55rem;
+  height: auto;
+  max-height: 45vh;
+  margin-top: -5vh;
+  z-index: 3;
+  position: relative;
+  @include small-laptop {
+    margin-top: -15vh;
+  }
+  @include tablet-landscape {
+    min-width: 40rem;
+  }
+  @include tablet-portrait {
+    min-width: 33rem;
+  }
+  @include phone-only {
+    min-width: 100%;
+    margin: -0.3rem auto;
+    min-height: 55rem;
+  }
 }
 
 .logo {
@@ -40,7 +74,15 @@ div {
   z-index: 2;
   width: 45%;
   max-width: 25rem;
-  bottom: 0;
+  min-width: 16rem;
+  top: 0;
+  @include small-laptop {
+    max-width: 16rem;
+  }
+  @include phone-only {
+    position: relative;
+    top: -7rem;
+  }
 }
 
 h1,
@@ -56,6 +98,9 @@ h1 {
     font-size: 3rem;
     padding: 0;
   }
+  @include phone-only {
+    margin-top: -5rem;
+  }
 }
 
 a {
@@ -67,7 +112,11 @@ article:nth-child(odd) {
   .logo {
     left: -20rem;
     @include small-laptop {
-      left: -15rem;
+      left: -12rem;
+    }
+    @include phone-only {
+      left: 50%;
+      transform: translateX(-50%);
     }
   }
   .blue-background {
@@ -91,6 +140,15 @@ article:nth-child(even) {
     @include small-laptop {
       right: -14rem;
     }
+    @include tablet-portrait {
+      right: -12rem;
+    }
+    @include phone-only {
+      float: none;
+      right: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
   }
 }
 
@@ -98,18 +156,23 @@ scroll-icon {
   position: absolute;
   bottom: 0;
   right: 1.5vw;
-}
-
-#chapacans {
-  @include small-laptop {
-    .blue-background {
-      margin-top: -20vh;
-    }
+  @include tablet-portrait {
+    left: 1.5vw;
+    right: auto;
+  }
+  @include phone-only {
+    display: none;
   }
 }
 
 #rascasses {
   .logo {
     bottom: 1vh;
+  }
+}
+
+sub-nav {
+  @include tablet-portrait {
+    display: none;
   }
 }

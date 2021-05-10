@@ -1,3 +1,34 @@
 <main>
+  <div class="head">
+    <a (click)="router.navigate(['/'])"
+      ><img
+        src="../assets/logo_MRDC.png"
+        alt="Logo Marseille Roller Derby Club"
+    /></a>
+    <naviguation [menuColor]="menuColor"></naviguation>
+  </div>
+  <ul>
+    <li>
+      <a
+        href="https://twitter.com/MarseilleRoller"
+        [ngStyle]="{ color: socialsColor }"
+        ><fa-icon [icon]="twitter"></fa-icon
+      ></a>
+    </li>
+    <li>
+      <a
+        href="https://www.facebook.com/marseillerollerderby/"
+        [ngStyle]="{ color: socialsColor }"
+        ><fa-icon [icon]="facebook"></fa-icon
+      ></a>
+    </li>
+    <li>
+      <a
+        href="https://www.instagram.com/marseillerollerderbyclub/"
+        [ngStyle]="{ color: socialsColor }"
+        ><fa-icon [icon]="instagram"></fa-icon
+      ></a>
+    </li>
+  </ul>
   <router-outlet></router-outlet>
 </main>

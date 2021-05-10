@@ -6,7 +6,6 @@ import { Observable } from 'rxjs';
 @Injectable({ providedIn: 'root' })
 export class HttpService {
   get apiUrl(): string {
-    console.log(environment.apiUrl);
     return environment.apiUrl;
   }
 

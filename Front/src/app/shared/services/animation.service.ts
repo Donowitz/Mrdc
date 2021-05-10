@@ -32,4 +32,16 @@ export class AnimationService {
       );
     }
   }
+
+  getScrollDirection(doc): string {
+    let scrollPos = 0;
+    console.log(doc.body.getBoundingClientRect().top);
+    if (doc.body.getBoundingClientRect().top > scrollPos) {
+      scrollPos = doc.body.getBoundingClientRect().top;
+      return 'up';
+    } else {
+      scrollPos = doc.body.getBoundingClientRect().top;
+      return 'down';
+    }
+  }
 }

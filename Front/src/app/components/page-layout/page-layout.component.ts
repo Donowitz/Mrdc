@@ -5,6 +5,7 @@ import {
   TemplateRef,
   OnInit,
   ViewEncapsulation,
+  AfterViewInit,
 } from '@angular/core';
 
 @Component({
@@ -19,8 +20,8 @@ export class PageLayoutComponent implements OnInit {
 
   constructor(private renderer: Renderer2) {}
 
-  ngOnInit() {
-    let imgBox = document.getElementById('image');
-    this.renderer.setStyle(imgBox, 'background-image', `url(${this.imgSrc})`);
+  ngOnInit(): void {
+    // let imgBox = document.getElementById('image');
+    // this.renderer.setStyle(imgBox, 'background-image', `url(${this.imgSrc})`);
   }
 }
