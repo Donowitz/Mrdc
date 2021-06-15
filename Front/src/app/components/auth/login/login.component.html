@@ -8,9 +8,7 @@
   outline="danger"
   role="alert"
 >
-  <ul>
-    <li *ngFor="let error of errors" class="error-msg">{{ error }}</li>
-  </ul>
+  <p *ngFor="let error of errors" class="error-msg">{{ error }}</p>
 </nb-alert>
 
 <form (ngSubmit)="login()" #form="ngForm" aria-labelledby="title">

@@ -22,6 +22,7 @@ export class NaviguationComponent implements OnInit {
     // { name: 'Blog', route: 'blog' },
     { name: 'Medias', route: 'medias' },
     { name: 'Contact', route: 'contact' },
+    { name: 'Connexion', route: 'auth/login' },
   ];
   indexRouteSelected: number;
   i = 0;

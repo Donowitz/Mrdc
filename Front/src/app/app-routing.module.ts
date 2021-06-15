@@ -1,3 +1,4 @@
+import { SharedModule } from './shared/shared.module';
 import { NousRejoindreComponent } from './pages/nous-rejoindre/nous-rejoindre.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -9,6 +10,8 @@ import { TeamsComponent } from './pages/teams/teams.component';
 import { AppLoginComponent } from './components/auth/login/login.component';
 import { NbAuthComponent } from '@nebular/auth';
 import { QuezakoComponent } from './pages/quezako/quezako.component';
+import { ClubComponent } from './pages/club/club.component';
+import { AuthGuard } from './shared/guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -22,10 +25,10 @@ const routes: Routes = [
         path: 'quezako',
         component: QuezakoComponent,
       },
-      // {
-      //   path: 'le-club',
-      //   component: ClubComponent,
-      // },
+      {
+        path: 'le-club',
+        component: ClubComponent,
+      },
       {
         path: 'nos-equipes',
         component: TeamsComponent,
@@ -61,10 +64,6 @@ const routes: Routes = [
       //   component: AppSignupComponent,
       // },
       // {
-      //   path: 'logout',
-      //   component: NbLogoutComponent,
-      // },
-      // {
       //   path: 'request-password',
       //   component: AppRequestPasswordComponent,
       // },
@@ -75,10 +74,18 @@ const routes: Routes = [
       // },
     ],
   },
+  // {
+  //   path: 'admin',
+  //   canActivate: [AuthGuard],
+  //   children: [{ path: '' }],
+  // },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })],
+  imports: [
+    RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' }),
+    SharedModule,
+  ],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

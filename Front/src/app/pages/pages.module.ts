@@ -1,3 +1,4 @@
+import { ClubComponent } from './club/club.component';
 import { QuezakoComponent } from './quezako/quezako.component';
 import { TeamsComponent } from './teams/teams.component';
 import { ContactComponent } from './contact/contact.component';
@@ -28,6 +29,7 @@ import { BackendModule } from '../shared/services/backend.module';
     ContactComponent,
     TeamsComponent,
     QuezakoComponent,
+    ClubComponent,
   ],
   providers: [],
 })

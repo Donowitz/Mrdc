@@ -1,19 +1,8 @@
-import {
-  CreateUserDto,
-  UserDto,
-  UserRole,
-} from '../shared/models/dto/usersDto';
+import { UserDto } from '../shared/models/dto/usersDto';
 import { UsersService } from '../users/users.service';
 import { AuthService } from './auth.service';
 import { LocalAuthGuard } from './guard/local-auth.guard';
 import { Controller, Post, UseGuards, Get, Body, Query } from '@nestjs/common';
-import { Observable, from } from 'rxjs';
-import * as bcrypt from 'bcryptjs';
-
-import { map, mergeMap } from 'rxjs/operators';
-import { UpdateResult } from 'typeorm';
-//import { MailerService } from '@nestjs-modules/mailer';
-//import { OfficeService } from 'src/office/office.service';
 
 var uuid = require('uuid');
 
@@ -25,9 +14,8 @@ export class AuthController {
 
   constructor(
     private readonly authService: AuthService,
-    private readonly usersService: UsersService, // private readonly mailService: MailerService,
-  ) // private readonly officeSevice: OfficeService,
-  {
+    private readonly usersService: UsersService, // private readonly mailService: MailerService, // private readonly officeSevice: OfficeService,
+  ) {
     this.memoryCache = cacheManager.caching({
       store: 'memory',
       max: 100,
@@ -35,7 +23,7 @@ export class AuthController {
     });
   }
 
-  @UseGuards(LocalAuthGuard)
+  //@UseGuards(LocalAuthGuard)
   @Post('login')
   login(@Body() user: UserDto) {
     return this.authService.login(user);

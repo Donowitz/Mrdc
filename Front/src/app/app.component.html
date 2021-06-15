@@ -1,5 +1,5 @@
 <main>
-  <div class="head">
+  <div class="head" *ngIf="router.url.split('/')[1] != 'auth'">
     <a (click)="router.navigate(['/'])"
       ><img
         src="../assets/logo_MRDC.png"
@@ -7,7 +7,7 @@
     /></a>
     <naviguation [menuColor]="menuColor"></naviguation>
   </div>
-  <ul>
+  <ul *ngIf="router.url.split('/')[1] != 'auth'">
     <li>
       <a
         href="https://twitter.com/MarseilleRoller"

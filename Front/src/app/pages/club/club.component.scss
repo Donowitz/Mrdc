@@ -1,0 +1,115 @@
+.club-section {
+  scroll-behavior: unset;
+  article:nth-child(2) {
+    position: relative;
+    height: 100%;
+    padding: 2rem 5rem;
+    display: grid;
+    grid-template-columns: repeat(10, 9%);
+    //grid-gap: 1rem;
+    grid-row-gap: 5rem;
+    grid-column-gap: 1rem;
+  }
+}
+
+.start-date {
+  padding: 2rem;
+  border-radius: 50%;
+  background-color: #e9c341;
+  position: absolute;
+  left: 5rem;
+  top: 4rem;
+  text-align: center;
+  z-index: 10;
+  h2 {
+    text-transform: uppercase;
+    border-bottom: solid 1px #000;
+  }
+}
+
+.blue-border-box {
+  border: solid 5px #009ee1;
+  padding: 1rem;
+  //background-color: #fff;
+  //overflow: hidden;
+  position: relative;
+  h2,
+  p {
+    color: rgb(55, 55, 55);
+  }
+  h2 {
+    font-size: 2.5rem;
+    border-bottom: solid 2px rgb(55, 55, 55);
+    width: 28%;
+    margin: 0;
+  }
+}
+
+.block-1 {
+  grid-column: 1 / 5;
+  grid-row: 1;
+  margin-left: 2rem;
+  div p {
+    width: 65%;
+    float: right;
+  }
+}
+
+.block-2 {
+  grid-column: 6 / 11;
+  grid-row: 1;
+  .blue-border-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-bottom: 9rem;
+    //overflow: inherit;
+    .photos {
+      position: absolute;
+      bottom: -1rem;
+      left: -1.5rem;
+      z-index: -1;
+      width: 60%;
+    }
+    p {
+      width: 30%;
+      margin: 0;
+    }
+    .logos {
+      bottom: -7rem;
+      right: -1.5rem;
+      width: 45%;
+    }
+  }
+}
+
+.block-3 {
+  grid-column: 3 / 7;
+  grid-row: 2;
+  .logos {
+    top: -2rem;
+    left: -4rem;
+    width: 45%;
+  }
+  .photos {
+    width: 100%;
+    left: 16rem;
+  }
+  h2 {
+    margin: -2.5rem auto 0;
+  }
+  p {
+    margin-top: 8rem;
+    width: 60%;
+  }
+}
+
+// ----- GENERAL
+.logos {
+  position: absolute;
+  z-index: 10;
+}
+.photos {
+  position: absolute;
+  z-index: -1;
+}
