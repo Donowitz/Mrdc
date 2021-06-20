@@ -7,13 +7,18 @@ section {
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
   margin-top: 15vh;
+
+  .add-team {
+    position: absolute;
+    top: 2rem;
+    left: 50%;
+    z-index: 20;
+  }
 }
 
 article {
   height: 100%;
   scroll-snap-align: center;
-  display: flex;
-  align-items: center;
   padding: 0 5rem 2rem;
   overflow: auto;
   position: relative;
@@ -22,17 +27,11 @@ article {
     padding: 0 2rem;
   }
   @include phone-only {
-    padding: 0 1rem 2rem;
-    align-items: flex-start;
+    padding: 0;
   }
-
-  // > div {
-  //   margin: 0 auto;
-  // }
 }
 
 .team-img {
-  //display: block;
   height: 50vh;
   @include small-laptop {
     height: 55vh;
@@ -48,14 +47,9 @@ article {
   padding: 1.2rem;
   width: 60%;
   max-width: 55rem;
-  height: auto;
-  max-height: 45vh;
-  margin-top: -5vh;
   z-index: 3;
-  position: relative;
-  @include small-laptop {
-    margin-top: -15vh;
-  }
+  position: absolute;
+  top: 40%;
   @include tablet-landscape {
     min-width: 40rem;
   }
@@ -63,8 +57,9 @@ article {
     min-width: 33rem;
   }
   @include phone-only {
+    top: 14rem;
+    padding-top: 15rem;
     min-width: 100%;
-    margin: -0.3rem auto;
     min-height: 55rem;
   }
 }
@@ -80,8 +75,7 @@ article {
     max-width: 16rem;
   }
   @include phone-only {
-    position: relative;
-    top: -7rem;
+    top: -5rem;
   }
 }
 
@@ -92,15 +86,14 @@ a {
 }
 
 h1 {
-  margin: 0;
-  font-size: 4rem;
-  @include small-laptop {
-    font-size: 3rem;
-    padding: 0;
-  }
-  @include phone-only {
-    margin-top: -5rem;
-  }
+  display: flex;
+  align-items: center;
+}
+
+.edit-team {
+  margin-right: 1rem;
+  z-index: 10;
+  position: relative;
 }
 
 a {
@@ -112,7 +105,7 @@ article:nth-child(odd) {
   .logo {
     left: -20rem;
     @include small-laptop {
-      left: -12rem;
+      left: -10rem;
     }
     @include phone-only {
       left: 50%;
@@ -120,17 +113,23 @@ article:nth-child(odd) {
     }
   }
   .blue-background {
-    float: right;
+    right: 5rem;
+    @include phone-only {
+      right: 0;
+    }
   }
 }
 
 article:nth-child(even) {
-  img {
+  img:not(.logo) {
     float: right;
   }
   .blue-background {
-    float: left;
+    left: 5rem;
     padding-right: 3vw;
+    @include phone-only {
+      left: 0;
+    }
     p {
       width: 90%;
     }
@@ -138,14 +137,13 @@ article:nth-child(even) {
   .logo {
     right: -15rem;
     @include small-laptop {
-      right: -14rem;
+      right: -10rem;
     }
     @include tablet-portrait {
-      right: -12rem;
+      right: -8rem;
     }
     @include phone-only {
-      float: none;
-      right: 0;
+      right: O;
       left: 50%;
       transform: translateX(-50%);
     }

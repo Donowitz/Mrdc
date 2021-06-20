@@ -1,58 +1,22 @@
 @import "./shared/scss/mixin.scss";
 @import "../themes.scss";
 
-* {
-  font-family: "Josefin Sans", "Roboto", sans-serif;
-}
-
-html {
-  background-color: #f8f8f8;
-}
 h1 {
-  font-size: 3rem;
-  font-weight: 700;
   text-transform: uppercase;
-  padding: 1rem 0;
-  line-height: 1.2;
-  @include laptop {
-    font-size: 2rem;
-  }
-}
-h3 {
-  font-size: 1.5rem;
-  text-align: center;
-  margin: 0.2rem 0;
-  @include laptop {
-    font-size: 1.3rem;
-  }
-}
-p,
-li,
-a,
-button {
-  font-weight: 300;
-  font-size: 1.4rem;
-  line-height: 1.1;
-  @include laptop {
-    font-size: 1.2rem;
-  }
-}
-a {
-  cursor: pointer;
   margin: 0;
 }
-.primary-btn {
-  padding: 1rem 2rem;
-  background-color: #009de4;
+h3 {
+  text-align: center;
+  //margin: 0.2rem 0;
+}
+
+a {
+  color: nb-theme(text-basic-color);
   cursor: pointer;
-  a {
-    text-transform: uppercase;
-    text-decoration: none;
-    color: #fff;
-    font-size: 1rem;
-    display: block;
-    text-align: center;
-    font-weight: 500;
+  text-decoration: none;
+  margin: 0;
+  &:hover {
+    color: #e9c341;
   }
 }
 
@@ -89,13 +53,12 @@ a {
   justify-content: space-between;
   padding: 0 1rem;
   align-items: center;
-  a {
+  > img {
     z-index: 10;
-    img {
-      width: 15%;
-      @include phone-only {
-        width: 25%;
-      }
+    width: 12%;
+    cursor: pointer;
+    @include phone-only {
+      width: 25%;
     }
   }
 }

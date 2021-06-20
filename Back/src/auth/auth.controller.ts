@@ -23,7 +23,7 @@ export class AuthController {
     });
   }
 
-  //@UseGuards(LocalAuthGuard)
+  @UseGuards(LocalAuthGuard)
   @Post('login')
   login(@Body() user: UserDto) {
     return this.authService.login(user);

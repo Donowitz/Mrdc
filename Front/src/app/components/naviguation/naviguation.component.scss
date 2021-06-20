@@ -1,4 +1,9 @@
 @import "../../shared/scss/mixin.scss";
+@import "../../../themes.scss";
+
+* {
+  font-family: nb-theme(font-family-primary);
+}
 
 .main-nav {
   display: flex;
@@ -10,8 +15,7 @@
     padding: 0 1rem;
     text-transform: uppercase;
     font-style: italic;
-    font-size: 1.4rem;
-    color: #373737;
+    font-weight: 400;
     @include phone-only {
       display: none;
     }
@@ -42,7 +46,7 @@ section {
       text-decoration: none;
       color: #fff;
       padding: 1rem;
-      font-weight: 700;
+      font-weight: 600;
       display: block;
       @include phone-only {
         font-size: 1.8rem;

@@ -1,4 +1,17 @@
-<section *ngIf="teams$ | async as teams">
+<section *ngIf="teams">
+  <ng-container *ngIf="admin">
+    <button
+      nbButton
+      (click)="openTeamPopup()"
+      class="add-team"
+      status="primary"
+      shape="round"
+      nbTooltip="Ajouter une équipe"
+    >
+      <nb-icon icon="plus-outline"></nb-icon>
+    </button>
+  </ng-container>
+
   <sub-nav
     [menu]="equipeMenu"
     [route]="'/nos-equipes'"
@@ -9,34 +22,46 @@
     id="{{ equipeMenu[i].ancre }}"
     *ngFor="let team of teams; let i = index"
   >
-    <div>
+    <img
+      src="./../../../assets/equipes/bloodys.jpg"
+      alt="Bloody Skulls"
+      class="team-img"
+    />
+    <div class="blue-background">
       <img
-        src="./../../../assets/equipes/bloodys.jpg"
-        alt="Bloody Skulls"
-        class="team-img"
+        src="./../../../assets/equipes/logo_bs.png"
+        alt="Logo Bloody Skulls"
+        class="logo"
       />
-      <div class="blue-background">
-        <img
-          src="./../../../assets/equipes/logo_bs.png"
-          alt="Logo Bloody Skulls"
-          class="logo"
-        />
-        <h1>{{ team.teamName }}</h1>
-        <div class="intro-container">
-          <p>{{ team.teamStory }}</p>
-          <a
-            *ngIf="team.flatTrackUrl"
-            href="{{ team.flatTrackUrl }}"
-            target="_blank"
-            >Tous les résultats des {{ team.teamName }} ></a
-          >
-          <a
-            *ngIf="team.teamName === 'Chapacans'"
-            href="http://flattrackstats.com/teams/112544"
-            target="_blank"
-            >Tous les résultats des des Gerbes de Provence ></a
-          >
-        </div>
+      <h1>
+        <button
+          *ngIf="admin"
+          nbButton
+          (click)="openTeamPopup(team.id)"
+          status="info"
+          shape="semi-round"
+          size="large"
+          class="edit-team"
+          nbTooltip="Éditer l'équipe"
+        >
+          <nb-icon icon="edit-2-outline"></nb-icon>
+        </button>
+        {{ team.teamName }}
+      </h1>
+      <div class="intro-container">
+        <p>{{ team.teamStory }}</p>
+        <a
+          *ngIf="team.flatTrackUrl"
+          href="{{ team.flatTrackUrl }}"
+          target="_blank"
+          >Tous les résultats des {{ team.teamName }} ></a
+        >
+        <a
+          *ngIf="team.teamName === 'Chapacans'"
+          href="http://flattrackstats.com/teams/112544"
+          target="_blank"
+          >Tous les résultats des des Gerbes de Provence ></a
+        >
       </div>
     </div>
   </article>

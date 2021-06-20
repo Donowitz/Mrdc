@@ -50,10 +50,3 @@ h1 {
 p {
   padding-bottom: 2rem;
 }
-
-.primary-btn {
-  width: 17rem;
-  @include phone-only {
-    width: 10rem;
-  }
-}

@@ -8,6 +8,10 @@ import {
   NbInputModule,
   NbAlertModule,
   NbCheckboxModule,
+  NbDialogModule,
+  NbLayoutModule,
+  NbToastrModule,
+  NbTooltipModule,
 } from '@nebular/theme';
 
 @NgModule({
@@ -20,6 +24,10 @@ import {
     NbInputModule,
     NbAlertModule,
     NbCheckboxModule,
+    NbDialogModule.forRoot(),
+    NbLayoutModule,
+    NbToastrModule.forRoot(),
+    NbTooltipModule,
   ],
   exports: [
     NbCardModule,
@@ -29,6 +37,10 @@ import {
     NbInputModule,
     NbAlertModule,
     NbCheckboxModule,
+    NbDialogModule,
+    NbLayoutModule,
+    NbToastrModule,
+    NbTooltipModule,
   ],
   declarations: [],
   providers: [],

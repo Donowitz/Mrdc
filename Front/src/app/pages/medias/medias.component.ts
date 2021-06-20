@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { MediaDto } from './../../../../../Back/src/shared/models/dto/mediasDto';
 import { Component, OnInit } from '@angular/core';
 import { MediasService } from 'src/app/core/backend/services/medias.service';
@@ -30,7 +31,10 @@ export class MediasComponent implements OnInit {
   // ];
   mediasBgImg: string;
 
-  constructor(private mediasService: MediasService) {}
+  constructor(
+    private readonly mediasService: MediasService,
+    public readonly router: Router
+  ) {}
 
   ngOnInit() {
     this.mediasBgImg = './../../../assets/media.jpg';

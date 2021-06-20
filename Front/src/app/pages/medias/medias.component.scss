@@ -13,6 +13,7 @@ article {
 aside {
   overflow: auto;
   max-height: 25rem;
+  margin-top: 2rem;
   @include tablet-portrait {
     max-height: none;
     overflow: hidden;
@@ -20,22 +21,16 @@ aside {
   }
 
   div {
-    margin: 2rem 0;
+    margin: 2rem 1.5rem 2rem 0;
+    &:first-of-type {
+      margin-top: 0;
+    }
+    &:last-of-type {
+      margin-bottom: 0;
+    }
   }
 
   h3 {
     text-align: left;
-  }
-  a {
-    text-decoration: none;
-    cursor: pointer;
-  }
-}
-
-.primary-btn {
-  width: 10rem;
-  margin-bottom: 3rem;
-  @include tablet-portrait {
-    margin-bottom: 1rem;
   }
 }

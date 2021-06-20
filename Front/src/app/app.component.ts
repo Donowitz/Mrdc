@@ -18,6 +18,8 @@ export class AppComponent implements OnInit {
   instagram = faInstagram;
   twitter = faTwitter;
 
+  admin: boolean = true;
+
   constructor(public router: Router) {}
 
   ngOnInit(): void {

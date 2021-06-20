@@ -1,5 +1,5 @@
 <div class="main-nav">
-  <span [ngStyle]="{ color: menuColor }">Menu</span>
+  <span [ngStyle]="{ color: menuColor }" class="h3">Menu</span>
   <div
     id="hamburger-icon"
     [ngClass]="toggleMenu ? 'active' : ''"
@@ -19,5 +19,7 @@
       *ngFor="let link of routeArray; let i = index"
       >{{ link.name }}</a
     >
+    <a routerLink="auth/login" *ngIf="!admin">Connexion</a>
+    <a (click)="authService.logout()" *ngIf="admin">Déconnexion</a>
   </nav>
 </section>

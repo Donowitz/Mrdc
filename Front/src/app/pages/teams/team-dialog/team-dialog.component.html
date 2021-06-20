@@ -1,0 +1,96 @@
+<nb-card>
+  <nb-card-header
+    >{{ teamId ? "Modifier" : "Ajouter" }} une équipe</nb-card-header
+  >
+  <nb-card-body>
+    <form [formGroup]="teamForm">
+      <div>
+        <input
+          nbInput
+          shape="semi-round"
+          formControlName="teamName"
+          placeholder="Nom de l'équipe"
+        />
+        <ng-container
+          *ngIf="
+            teamForm.get('teamName').invalid &&
+            (teamForm.get('teamName').dirty || teamForm.get('teamName').touched)
+          "
+        >
+          <p class="error-msg" *ngIf="teamForm.get('teamName').errors.required">
+            <nb-icon icon="alert-circle-outline"></nb-icon> Nom d'équipe requis
+          </p>
+          <p
+            class="error-msg"
+            *ngIf="teamForm.get('teamName').errors.minlength"
+          >
+            <nb-icon icon="alert-circle-outline"></nb-icon> Le nom doit contenir
+            au moins 3 caractères
+          </p>
+        </ng-container>
+      </div>
+      <textarea
+        nbInput
+        fullWidth
+        shape="semi-round"
+        formControlName="teamStory"
+        placeholder="À propos de l'équipe"
+      ></textarea>
+      <div>
+        <input
+          nbInput
+          fullWidth
+          shape="semi-round"
+          formControlName="flatTrackUrl"
+          placeholder="Lien Flat Track Roller Derby"
+        />
+        <ng-container
+          *ngIf="
+            teamForm.get('flatTrackUrl').invalid &&
+            (teamForm.get('flatTrackUrl').dirty ||
+              teamForm.get('flatTrackUrl').touched)
+          "
+        >
+          <p class="error-msg" *ngIf="teamForm.get('flatTrackUrl').errors">
+            <nb-icon icon="alert-circle-outline"></nb-icon> Url invalide
+          </p>
+        </ng-container>
+      </div>
+      <div>
+        <input
+          type="number"
+          nbInput
+          shape="semi-round"
+          formControlName="order"
+          placeholder="Ordre d'apparition"
+        />
+        <ng-container
+          *ngIf="
+            teamForm.get('order').invalid &&
+            (teamForm.get('order').dirty || teamForm.get('order').touched)
+          "
+        >
+          <p class="error-msg" *ngIf="teamForm.get('order').errors.required">
+            <nb-icon icon="alert-circle-outline"></nb-icon> Ordre requis
+          </p>
+        </ng-container>
+      </div>
+      <nb-checkbox status="primary" formControlName="isActiveTeam"
+        >Afficher sur le site</nb-checkbox
+      >
+    </form>
+  </nb-card-body>
+  <nb-card-footer>
+    <div>
+      <a (click)="closeDialog()">Annuler</a>
+      <button
+        nbButton
+        status="primary"
+        (click)="saveTeam()"
+        [disabled]="!teamForm.valid"
+      >
+        Enregistrer
+      </button>
+    </div>
+  </nb-card-footer>
+</nb-card>

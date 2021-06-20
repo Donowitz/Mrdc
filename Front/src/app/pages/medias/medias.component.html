@@ -3,13 +3,17 @@
     <div class="flex">
       <article>
         <h1>ils parlent <br />de nous</h1>
-        <div class="primary-btn">
-          <a
-            href="https://www.youtube.com/watch?v=AuEZ95xbdvk&list=PLiOJwCfQxioUEzKMtN2uijLqoNUl1vjBd"
-            target="_blank"
-            >En vidéo</a
-          >
-        </div>
+        <button
+          status="primary"
+          nbButton
+          (click)="
+            router.navigateByUrl(
+              'https://www.youtube.com/watch?v=AuEZ95xbdvk&list=PLiOJwCfQxioUEzKMtN2uijLqoNUl1vjBd'
+            )
+          "
+        >
+          En vidéo
+        </button>
         <aside>
           <div *ngFor="let article of articles" class="media">
             <h3>{{ article.magazine }} :</h3>

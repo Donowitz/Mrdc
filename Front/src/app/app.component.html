@@ -1,34 +1,40 @@
 <main>
-  <div class="head" *ngIf="router.url.split('/')[1] != 'auth'">
-    <a (click)="router.navigate(['/'])"
-      ><img
+  <ng-container *ngIf="router.url.split('/')[1] != 'auth'">
+    <div class="head">
+      <img
         src="../assets/logo_MRDC.png"
         alt="Logo Marseille Roller Derby Club"
-    /></a>
-    <naviguation [menuColor]="menuColor"></naviguation>
-  </div>
-  <ul *ngIf="router.url.split('/')[1] != 'auth'">
-    <li>
-      <a
-        href="https://twitter.com/MarseilleRoller"
-        [ngStyle]="{ color: socialsColor }"
-        ><fa-icon [icon]="twitter"></fa-icon
-      ></a>
-    </li>
-    <li>
-      <a
-        href="https://www.facebook.com/marseillerollerderby/"
-        [ngStyle]="{ color: socialsColor }"
-        ><fa-icon [icon]="facebook"></fa-icon
-      ></a>
-    </li>
-    <li>
-      <a
-        href="https://www.instagram.com/marseillerollerderbyclub/"
-        [ngStyle]="{ color: socialsColor }"
-        ><fa-icon [icon]="instagram"></fa-icon
-      ></a>
-    </li>
-  </ul>
-  <router-outlet></router-outlet>
+        (click)="router.navigate(['/'])"
+      />
+      <naviguation [menuColor]="menuColor"></naviguation>
+    </div>
+    <ul *ngIf="!admin">
+      <li>
+        <a
+          href="https://twitter.com/MarseilleRoller"
+          [ngStyle]="{ color: socialsColor }"
+          ><fa-icon [icon]="twitter"></fa-icon
+        ></a>
+      </li>
+      <li>
+        <a
+          href="https://www.facebook.com/marseillerollerderby/"
+          [ngStyle]="{ color: socialsColor }"
+          ><fa-icon [icon]="facebook"></fa-icon
+        ></a>
+      </li>
+      <li>
+        <a
+          href="https://www.instagram.com/marseillerollerderbyclub/"
+          [ngStyle]="{ color: socialsColor }"
+          ><fa-icon [icon]="instagram"></fa-icon
+        ></a>
+      </li>
+    </ul>
+  </ng-container>
+  <nb-layout>
+    <nb-layout-column>
+      <router-outlet></router-outlet>
+    </nb-layout-column>
+  </nb-layout>
 </main>

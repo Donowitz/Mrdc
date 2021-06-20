@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NavigationStart, Router } from '@angular/router';
+import { AuthService } from 'src/app/core/backend/services/auth.service';
 
 @Component({
   selector: 'naviguation',
@@ -22,12 +23,16 @@ export class NaviguationComponent implements OnInit {
     // { name: 'Blog', route: 'blog' },
     { name: 'Medias', route: 'medias' },
     { name: 'Contact', route: 'contact' },
-    { name: 'Connexion', route: 'auth/login' },
   ];
   indexRouteSelected: number;
   i = 0;
 
-  constructor(public router: Router) {}
+  admin = true;
+
+  constructor(
+    public readonly router: Router,
+    public readonly authService: AuthService
+  ) {}
 
   ngOnInit(): void {
     this.router.events.subscribe((event) => {

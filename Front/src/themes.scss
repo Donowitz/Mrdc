@@ -1,18 +1,71 @@
-@import '~@nebular/theme/styles/theming';
-@import '~@nebular/theme/styles/themes/default';
+@import "~@nebular/theme/styles/theming";
+@import "~@nebular/theme/styles/themes/default";
+@font-face {
+  font-family: "Josefin Sans";
+  src: url("./assets/fonts/JosefinSans-Light.ttf");
+  font-weight: 300;
+  unicode-range: U+000-5FF;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Josefin Sans";
+  src: url("./assets/fonts/JosefinSans-Regular.ttf");
+  font-weight: 400;
+  unicode-range: U+000-5FF;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Josefin Sans";
+  src: url("./assets/fonts/JosefinSans-SemiBold.ttf");
+  font-weight: 600;
+  unicode-range: U+000-5FF;
+  font-display: swap;
+}
 
-$nb-themes: nb-register-theme((
-
-  // add your variables here like:
-
-  // color-primary-100: #f2f6ff,
-  // color-primary-200: #d9e4ff,
-  // color-primary-300: #a6c1ff,
-  // color-primary-400: #598bff,
-  // color-primary-500: #3366ff,
-  // color-primary-600: #274bdb,
-  // color-primary-700: #1a34b8,
-  // color-primary-800: #102694,
-  // color-primary-900: #091c7a,
-
-), default, default);
+$nb-themes: nb-register-theme(
+  (
+    // TYPOS
+    font-family-primary: "Josefin Sans",
+    font-family-secondary: font-family-primary,
+    text-basic-color: rgb(55, 55, 55),
+    //titles
+    text-heading-font-weight: 600,
+    text-heading-1-font-size: 2.5rem,
+    text-heading-1-line-height: 1.2,
+    text-heading-2-font-size: 2rem,
+    text-heading-2-line-height: 1.2,
+    text-heading-3-font-size: 1.3rem,
+    text-heading-3-line-height: 1.2,
+    //paragraphs
+    text-paragraph-font-size: 1.3rem,
+    text-paragraph-font-weight: 300,
+    text-paragraph-line-height: 1.1,
+    // STRUCTURE
+    layout-padding: 0,
+    layout-text-color: rgb(55, 55, 55),
+    layout-background-color: #f8f8f8,
+    //cards
+    card-border-radius: 10px,
+    card-header-text-font-size: 1.3rem,
+    // Button Theme
+    outline-width: 0,
+    button-filled-border-width: 0,
+    text-button-font-weight: 600,
+    button-medium-text-font-size: 1.2rem,
+    button-medium-icon-size: 1.5rem,
+    button-filled-medium-padding: 1rem 2rem,
+    color-primary-default: #009de4,
+    color-primary-600: #fff,
+    color-primary-hover: #1289c1,
+    color-info-default: #e9c341,
+    color-info-600: rgb(55, 55, 55),
+    color-info-hover: #d3ae31,
+    // Scrollbar Theme,
+    scrollbar-background-color: transparent,
+    scrollbar-color: #009de4,
+    // Input
+    input-medium-padding: 1rem
+  ),
+  default,
+  default
+);

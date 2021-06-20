@@ -20,7 +20,9 @@ export class TeamsService {
   }
 
   getOneTeam(teamId: string): Observable<TeamDto> {
-    return this.api.get(`${this.apiController}/${teamId}`);
+    let params = new HttpParams();
+    params = params.append('teamId', teamId);
+    return this.api.get(`${this.apiController}`, { params });
   }
 
   createTeam(team: CreateTeamDto) {

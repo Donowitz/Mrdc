@@ -7,6 +7,7 @@ import {
   Body,
   Put,
   Delete,
+  Query,
 } from '@nestjs/common';
 import { TeamsService } from './teams.service';
 import { Observable } from 'rxjs';
@@ -21,8 +22,8 @@ export class TeamsController {
     return this.teamsService.getAllTeams();
   }
 
-  @Get(':teamId')
-  getOneTeam(@Param(':teamId') teamId: string): Promise<TeamDto> {
+  @Get()
+  getOneTeam(@Query('teamId') teamId: string): Promise<TeamDto> {
     return this.teamsService.getOneTeam(teamId);
   }
 

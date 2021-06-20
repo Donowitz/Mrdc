@@ -1,3 +1,4 @@
+import { NebularModule } from './../shared/nebular.module';
 import { ClubComponent } from './club/club.component';
 import { QuezakoComponent } from './quezako/quezako.component';
 import { TeamsComponent } from './teams/teams.component';
@@ -11,6 +12,7 @@ import { NousRejoindreComponent } from './nous-rejoindre/nous-rejoindre.componen
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BackendModule } from '../shared/services/backend.module';
+import { TeamDialogComponent } from './teams/team-dialog/team-dialog.component';
 
 @NgModule({
   imports: [
@@ -19,6 +21,7 @@ import { BackendModule } from '../shared/services/backend.module';
     FormsModule,
     ReactiveFormsModule,
     BackendModule,
+    NebularModule,
   ],
   exports: [],
   declarations: [
@@ -30,6 +33,7 @@ import { BackendModule } from '../shared/services/backend.module';
     TeamsComponent,
     QuezakoComponent,
     ClubComponent,
+    TeamDialogComponent,
   ],
   providers: [],
 })
