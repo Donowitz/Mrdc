@@ -81,15 +81,28 @@
     </form>
   </nb-card-body>
   <nb-card-footer>
+    <span *ngIf="teamId" (click)="deleteTeam()" class="error-msg"
+      ><nb-icon icon="trash-outline"></nb-icon> Supprimer l'équipe</span
+    >
     <div>
       <a (click)="closeDialog()">Annuler</a>
       <button
+        *ngIf="teamId"
+        nbButton
+        status="primary"
+        (click)="updateTeam()"
+        [disabled]="!teamForm.valid"
+      >
+        Modifier
+      </button>
+      <button
+        *ngIf="!teamId"
         nbButton
         status="primary"
         (click)="saveTeam()"
         [disabled]="!teamForm.valid"
       >
-        Enregistrer
+        Créer
       </button>
     </div>
   </nb-card-footer>

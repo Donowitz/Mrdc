@@ -46,20 +46,28 @@ export class TeamDialogComponent implements OnInit {
 
   saveTeam(): void {
     this.teamsService.createTeam(this.teamForm.value).subscribe(() => {
-      this.dialogRef.close('La nouvelle équipe est bien enregistrée.');
+      this.dialogRef.close('Nouvelle équipe crée.');
     });
   }
 
-  updateTeam(teamId: string) {
-    this.teamsService.updateTeam(teamId, this.teamForm.value).subscribe(() => {
-      this.dialogRef.close('Les modifications sont bien enregistrées.');
+  updateTeam() {
+    this.teamsService
+      .updateTeam(this.teamId, this.teamForm.value)
+      .subscribe(() => {
+        this.dialogRef.close('Les modifications sont bien enregistrées.');
+      });
+  }
+
+  deleteTeam() {
+    this.teamsService.deleteTeam(this.teamId).subscribe(() => {
+      this.dialogRef.close(
+        `L'équipe ${this.teamForm.value.teamName} à été supprimée.`
+      );
     });
   }
 
   private setForm(teamId: string): void {
-    console.log(teamId);
     this.teamsService.getOneTeam(teamId).subscribe((team) => {
-      console.log(team);
       this.teamForm.controls['teamName'].setValue(team.teamName);
       this.teamForm.controls['teamStory'].setValue(team.teamStory);
       this.teamForm.controls['flatTrackUrl'].setValue(team.flatTrackUrl);

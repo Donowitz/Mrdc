@@ -22,8 +22,8 @@ export class TeamsController {
     return this.teamsService.getAllTeams();
   }
 
-  @Get()
-  getOneTeam(@Query('teamId') teamId: string): Promise<TeamDto> {
+  @Get(':teamId')
+  getOneTeam(@Param('teamId') teamId: string): Promise<TeamDto> {
     return this.teamsService.getOneTeam(teamId);
   }
 

@@ -20,9 +20,7 @@ export class TeamsService {
   }
 
   getOneTeam(teamId: string): Observable<TeamDto> {
-    let params = new HttpParams();
-    params = params.append('teamId', teamId);
-    return this.api.get(`${this.apiController}`, { params });
+    return this.api.get(`${this.apiController}/${teamId}`);
   }
 
   createTeam(team: CreateTeamDto) {
@@ -37,6 +35,6 @@ export class TeamsService {
   }
 
   deleteTeam(teamId: string): Observable<any> {
-    return this.api.delete(teamId);
+    return this.api.delete(`${this.apiController}/${teamId}`);
   }
 }

@@ -45,6 +45,7 @@ export class TeamsComponent implements OnInit {
 
   private getAllTeams(): void {
     this.teamsService.getAllTeams().subscribe((res) => {
+      this.equipeMenu = [];
       this.teams = res.filter((team) => {
         // Set ancres
         let ancre = team.teamName.replace(' ', '-').toLowerCase();
