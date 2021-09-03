@@ -1,5 +1,5 @@
-import { TeamsService } from './../../../core/backend/services/teams.service';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { TeamService } from '../../../core/backend/services/team.service';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NbDialogRef } from '@nebular/theme';
 
@@ -10,12 +10,11 @@ import { NbDialogRef } from '@nebular/theme';
 })
 export class TeamDialogComponent implements OnInit {
   @Input() teamId: string;
-  //@Output() isTeamFormValid: EventEmitter<any> = new EventEmitter();
   teamForm: FormGroup;
 
   constructor(
     private readonly fb: FormBuilder,
-    private readonly teamsService: TeamsService,
+    private readonly teamService: TeamService,
     public dialogRef: NbDialogRef<any>
   ) {}
 
@@ -45,13 +44,13 @@ export class TeamDialogComponent implements OnInit {
   }
 
   saveTeam(): void {
-    this.teamsService.createTeam(this.teamForm.value).subscribe(() => {
+    this.teamService.createTeam(this.teamForm.value).subscribe(() => {
       this.dialogRef.close('Nouvelle équipe crée.');
     });
   }
 
   updateTeam() {
-    this.teamsService
+    this.teamService
       .updateTeam(this.teamId, this.teamForm.value)
       .subscribe(() => {
         this.dialogRef.close('Les modifications sont bien enregistrées.');
@@ -59,7 +58,7 @@ export class TeamDialogComponent implements OnInit {
   }
 
   deleteTeam() {
-    this.teamsService.deleteTeam(this.teamId).subscribe(() => {
+    this.teamService.deleteTeam(this.teamId).subscribe(() => {
       this.dialogRef.close(
         `L'équipe ${this.teamForm.value.teamName} à été supprimée.`
       );
@@ -67,7 +66,7 @@ export class TeamDialogComponent implements OnInit {
   }
 
   private setForm(teamId: string): void {
-    this.teamsService.getOneTeam(teamId).subscribe((team) => {
+    this.teamService.getOneTeam(teamId).subscribe((team) => {
       this.teamForm.controls['teamName'].setValue(team.teamName);
       this.teamForm.controls['teamStory'].setValue(team.teamStory);
       this.teamForm.controls['flatTrackUrl'].setValue(team.flatTrackUrl);

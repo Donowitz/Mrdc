@@ -1,3 +1,4 @@
+import { TrainingDto } from './trainingsDto';
 import { IsNotEmpty } from 'class-validator';
 
 export class TeamDto {
@@ -9,6 +10,7 @@ export class TeamDto {
   public order: number;
   public isActiveTeam: boolean;
   public flatTrackUrl: string;
+  public trainings: TrainingDto[];
 }
 
 export class CreateTeamDto {

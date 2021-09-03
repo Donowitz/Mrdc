@@ -19,7 +19,9 @@
       *ngFor="let link of routeArray; let i = index"
       >{{ link.name }}</a
     >
-    <a routerLink="auth/login" *ngIf="!admin">Connexion</a>
-    <a (click)="authService.logout()" *ngIf="admin">Déconnexion</a>
+    <a routerLink="auth/login" *ngIf="!userService.connectedUser">Connexion</a>
+    <a (click)="authService.logout()" *ngIf="userService.connectedUser"
+      >Déconnexion</a
+    >
   </nav>
 </section>

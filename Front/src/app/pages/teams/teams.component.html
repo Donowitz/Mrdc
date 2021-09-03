@@ -1,5 +1,5 @@
 <section *ngIf="teams">
-  <ng-container *ngIf="admin">
+  <ng-container *ngIf="userService.connectedUser">
     <button
       nbButton
       (click)="openTeamPopup()"
@@ -23,19 +23,19 @@
     *ngFor="let team of teams; let i = index"
   >
     <img
-      src="./../../../assets/equipes/bloodys.jpg"
-      alt="Bloody Skulls"
+      src="./../../../assets/equipes/bloody-skull.jpg"
+      [alt]="team.teamName"
       class="team-img"
     />
     <div class="blue-background">
       <img
-        src="./../../../assets/equipes/logo_bs.png"
-        alt="Logo Bloody Skulls"
+        [src]="'./../../../assets/equipes/logo_' + equipeMenu[i].ancre + '.png'"
+        [alt]="'Logo' + team.teamName"
         class="logo"
       />
       <h1>
         <button
-          *ngIf="admin"
+          *ngIf="userService.connectedUser"
           nbButton
           (click)="openTeamPopup(team.id)"
           status="info"

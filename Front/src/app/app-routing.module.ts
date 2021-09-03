@@ -7,8 +7,6 @@ import { PartenariatComponent } from './pages/partenariat/partenariat.component'
 import { MediasComponent } from './pages/medias/medias.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { TeamsComponent } from './pages/teams/teams.component';
-import { AppLoginComponent } from './components/auth/login/login.component';
-import { NbAuthComponent } from '@nebular/auth';
 import { QuezakoComponent } from './pages/quezako/quezako.component';
 import { ClubComponent } from './pages/club/club.component';
 import { AuthGuard } from './shared/guards/auth.guard';
@@ -16,6 +14,7 @@ import { AuthGuard } from './shared/guards/auth.guard';
 const routes: Routes = [
   {
     path: '',
+    canActivate: [AuthGuard],
     children: [
       {
         path: '',
@@ -53,26 +52,8 @@ const routes: Routes = [
   },
   {
     path: 'auth',
-    component: NbAuthComponent,
-    children: [
-      {
-        path: 'login',
-        component: AppLoginComponent,
-      },
-      // {
-      //   path: 'register',
-      //   component: AppSignupComponent,
-      // },
-      // {
-      //   path: 'request-password',
-      //   component: AppRequestPasswordComponent,
-      // },
-      // {
-      //   path: 'reset-password',
-      //   component: AppResetPasswordComponent,
-      //   canActivate: [ResetPasswordGuard],
-      // },
-    ],
+    loadChildren: () =>
+      import('./core/auth/auth.module').then((m) => m.AuthModule),
   },
   // {
   //   path: 'admin',

@@ -1,5 +1,5 @@
-import { TeamsService } from './services/teams.service';
-import { UsersService } from './services/users.service';
+import { TeamService } from './services/team.service';
+import { UserService } from './services/user.service';
 import { HttpService } from './http.service';
 import { NgModule } from '@angular/core';
 import { AuthModule } from '../auth/auth.module';
@@ -8,6 +8,6 @@ import { AuthModule } from '../auth/auth.module';
   imports: [AuthModule],
   exports: [],
   declarations: [],
-  providers: [HttpService, TeamsService, UsersService],
+  providers: [HttpService, TeamService, UserService],
 })
 export class BackendModule {}

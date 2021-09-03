@@ -2,7 +2,7 @@ import { UserRole } from 'src/shared/models/dto/usersDto';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
-export class Users {
+export class User {
   @PrimaryGeneratedColumn('uuid')
   public id: string;
 

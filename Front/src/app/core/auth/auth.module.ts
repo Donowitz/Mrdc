@@ -1,8 +1,6 @@
-import { NebularModule } from './../../shared/nebular.module';
-import { AppLoginComponent } from './../../components/auth/login/login.component';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import {
@@ -10,19 +8,30 @@ import {
   NbAuthModule,
   NbPasswordAuthStrategy,
 } from '@nebular/auth';
+import {
+  NbAlertModule,
+  NbButtonModule,
+  NbCheckboxModule,
+  NbInputModule,
+} from '@nebular/theme';
+import { AppLoginComponent } from 'src/app/components/auth/login/login.component';
+import { AuthRoutingModule } from './auth-routing.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     RouterModule,
-    NebularModule,
-    ReactiveFormsModule,
+    NbAlertModule,
+    NbInputModule,
+    NbButtonModule,
+    NbCheckboxModule,
+    AuthRoutingModule,
+    NbAuthModule,
     NbAuthModule.forRoot({
       strategies: [
         NbPasswordAuthStrategy.setup({
           name: 'email',
-          baseEndpoint: '/api',
           token: {
             class: NbAuthJWTToken,
             key: 'access_token',
@@ -33,36 +42,16 @@ import {
             ],
             method: 'post',
             requireValidToken: false,
-            endpoint: '/auth/login',
+            endpoint: 'login',
             redirect: {
-              success: '',
+              success: '/nos-equipes',
               failure: null,
             },
           },
-          register: {
-            method: 'post',
-            requireValidToken: false,
-            endpoint: '/auth/register',
-          },
-          requestPass: {
-            defaultErrors: [`Cet email n'est pas valide`],
-            defaultMessages: [`Un email de récupération vous à été envoyé`],
-            method: 'post',
-            requireValidToken: false,
-            endpoint: '/auth/request-password',
-          },
-          resetPass: {
-            defaultErrors: [`Une erreur est survenue`],
-            method: 'post',
-            requireValidToken: false,
-            endpoint: '/auth/reset-password',
-          },
         }),
       ],
-      forms: {},
     }),
   ],
   declarations: [AppLoginComponent],
-  providers: [],
 })
 export class AuthModule {}

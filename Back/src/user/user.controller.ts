@@ -8,31 +8,31 @@ import {
   Put,
   Delete,
 } from '@nestjs/common';
-import { UsersService } from './users.service';
+import { UserService } from './user.service';
 import { UpdateResult } from 'typeorm';
 
-@Controller('users')
-export class UsersController {
-  constructor(private usersService: UsersService) {}
+@Controller('user')
+export class UserController {
+  constructor(private userService: UserService) {}
 
   @Get()
   async getAllUsers(): Promise<UserDto[]> {
-    return this.usersService.getAllUsers();
+    return this.userService.getAllUsers();
   }
 
   @Get(':userId')
   getOneUser(@Param(':userId') userId: string): Promise<UserDto> {
-    return this.usersService.getOneUser(userId);
+    return this.userService.getOneUser(userId);
   }
 
   @Get('byMail/:email')
   async getUserByEmail(@Param('email') email): Promise<UserDto> {
-    return this.usersService.getUserByEmail(email);
+    return this.userService.getUserByEmail(email);
   }
 
   @Post()
   async createUser(@Body() user: CreateUserDto): Promise<UserDto> {
-    return this.usersService.createUser(user);
+    return this.userService.createUser(user);
   }
 
   @Put(':userId')
@@ -40,11 +40,11 @@ export class UsersController {
     @Param('userId') userId: string,
     @Body() user: CreateUserDto,
   ): Promise<UpdateResult> {
-    return this.usersService.updateUser(userId, user);
+    return this.userService.updateUser(userId, user);
   }
 
   @Delete(':userId')
   deleteUser(@Param('userId') userId: string) {
-    this.usersService.deleteUser(userId);
+    this.userService.deleteUser(userId);
   }
 }

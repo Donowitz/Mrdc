@@ -1,7 +1,7 @@
 import {
-  CreateUserDto,
-  UserDto,
-} from '../../../../../../Back/src/shared/models/dto/usersDto';
+  CreateTeamDto,
+  TeamDto,
+} from '../../../../../../Back/src/shared/models/dto/teamsDto';
 import { Injectable } from '@angular/core';
 import { HttpService } from '../http.service';
 
@@ -10,33 +10,31 @@ import { catchError, map } from 'rxjs/operators';
 import { HttpParams } from '@angular/common/http';
 
 @Injectable({ providedIn: 'root' })
-export class UsersService {
-  connectedUser: UserDto;
-
+export class TeamService {
   constructor(private readonly api: HttpService) {}
 
-  private readonly apiController = 'teams';
+  private readonly apiController = 'team';
 
-  getAllUsers(): Observable<UserDto[]> {
+  getAllTeams(): Observable<TeamDto[]> {
     return this.api.get(`${this.apiController}`);
   }
 
-  getOneUser(teamId: string): Observable<UserDto> {
+  getOneTeam(teamId: string): Observable<TeamDto> {
     return this.api.get(`${this.apiController}/${teamId}`);
   }
 
-  createTeam(team: CreateUserDto) {
+  createTeam(team: CreateTeamDto) {
     return this.api.post(`${this.apiController}`, team);
   }
 
-  updateUser(
+  updateTeam(
     teamId: string,
-    partialTeam: Partial<CreateUserDto>
+    partialTeam: Partial<CreateTeamDto>
   ): Observable<any> {
     return this.api.put(`${this.apiController}/${teamId}`, partialTeam);
   }
 
-  deleteUser(teamId: string): Observable<any> {
-    return this.api.delete(teamId);
+  deleteTeam(teamId: string): Observable<any> {
+    return this.api.delete(`${this.apiController}/${teamId}`);
   }
 }

@@ -8,7 +8,7 @@ import {
   RouterStateSnapshot,
 } from '@angular/router';
 import { from, Observable, of } from 'rxjs';
-import { UsersService } from './../../core/backend/services/users.service';
+import { UserService } from '../../core/backend/services/user.service';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
@@ -17,7 +17,7 @@ export class AuthGuard implements CanActivate {
   constructor(
     private readonly authService: NbAuthService,
     private readonly router: Router,
-    private usersService: UsersService
+    private userService: UserService
   ) {}
 
   canActivate(
@@ -27,22 +27,22 @@ export class AuthGuard implements CanActivate {
     return this.authService.isAuthenticated().pipe(
       mergeMap((authenticated) => {
         if (!authenticated) {
-          return from(this.router.navigate(['auth/login']));
+          return of(true);
         } else {
-          if (!this.usersService.connectedUser) {
+          if (!this.userService.connectedUser) {
             return this.authService.getToken().pipe(
               tap((token) => console.log(token)),
               mergeMap((token: NbAuthJWTToken) => {
                 this.user = token.getPayload();
                 if (this.user) {
-                  return this.usersService.getOneUser(this.user.id).pipe(
+                  return this.userService.getOneUser(this.user.id).pipe(
                     map((user) => {
-                      this.usersService.connectedUser = user;
+                      this.userService.connectedUser = user;
                       return true;
                     })
                   );
                 } else {
-                  return from(this.router.navigate(['auth/login']));
+                  return of(true);
                 }
               })
             );

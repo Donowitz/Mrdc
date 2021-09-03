@@ -26,9 +26,10 @@ aside {
     padding: 4vh 2vw;
     justify-content: space-between;
     align-items: flex-start;
+    flex-wrap: wrap;
 
     div {
-      width: 100%;
+      width: 30%;
     }
   }
 
@@ -69,4 +70,18 @@ aside {
 
 article {
   margin-top: auto;
+}
+
+input {
+  margin: 1rem 0;
+}
+
+nb-select ::ng-deep {
+  .select-button {
+    min-width: 0;
+  }
+}
+
+button {
+  margin-top: 1rem;
 }

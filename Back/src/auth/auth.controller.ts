@@ -1,5 +1,5 @@
 import { UserDto } from '../shared/models/dto/usersDto';
-import { UsersService } from '../users/users.service';
+import { UserService } from '../user/user.service';
 import { AuthService } from './auth.service';
 import { LocalAuthGuard } from './guard/local-auth.guard';
 import { Controller, Post, UseGuards, Get, Body, Query } from '@nestjs/common';
@@ -14,7 +14,7 @@ export class AuthController {
 
   constructor(
     private readonly authService: AuthService,
-    private readonly usersService: UsersService, // private readonly mailService: MailerService, // private readonly officeSevice: OfficeService,
+    private readonly userService: UserService,
   ) {
     this.memoryCache = cacheManager.caching({
       store: 'memory',

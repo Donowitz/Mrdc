@@ -1,18 +1,18 @@
 import { MediaDto } from 'src/shared/models/dto/mediasDto';
-import { CreateMediaDto } from './../shared/models/dto/mediasDto';
-import { Medias } from './medias.entity';
+import { CreateMediaDto } from '../shared/models/dto/mediasDto';
+import { Media } from './media.entity';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { DeleteResult, Repository, UpdateResult } from 'typeorm';
 
 @Injectable()
-export class MediasService {
+export class MediaService {
   constructor(
-    @InjectRepository(Medias)
-    private mediaRepository: Repository<Medias>,
+    @InjectRepository(Media)
+    private mediaRepository: Repository<Media>,
   ) {}
 
-  getAllMedias(): Promise<Medias[]> {
+  getAllMedias(): Promise<Media[]> {
     return this.mediaRepository.find({
       order: {
         date: 'DESC',

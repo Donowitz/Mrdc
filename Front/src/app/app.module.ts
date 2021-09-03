@@ -1,13 +1,9 @@
-import { AuthModule } from './core/auth/auth.module';
 import { BackendModule } from './core/backend/backend.module';
 import { SharedComponentModule } from './components/sharedComponent.module';
 import { PageModule } from './pages/pages.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {
-  FaIconLibrary,
-  FontAwesomeModule,
-} from '@fortawesome/angular-fontawesome';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,6 +14,12 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { faFacebookF } from '@fortawesome/free-brands-svg-icons';
 import { fas } from '@fortawesome/free-solid-svg-icons';
+import {
+  NbAuthJWTToken,
+  NbAuthModule,
+  NbPasswordAuthStrategy,
+} from '@nebular/auth';
+import { AuthModule } from './core/auth/auth.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -30,9 +32,9 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
     SharedComponentModule,
     PageModule,
     BackendModule,
-    AuthModule,
     NebularModule,
     FontAwesomeModule,
+    AuthModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

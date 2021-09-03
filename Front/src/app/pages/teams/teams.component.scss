@@ -67,7 +67,7 @@ article {
 .logo {
   position: absolute;
   z-index: 2;
-  width: 45%;
+  width: 40%;
   max-width: 25rem;
   min-width: 16rem;
   top: 0;
@@ -103,7 +103,7 @@ a {
 
 article:nth-child(odd) {
   .logo {
-    left: -20rem;
+    left: -19rem;
     @include small-laptop {
       left: -10rem;
     }
@@ -135,7 +135,7 @@ article:nth-child(even) {
     }
   }
   .logo {
-    right: -15rem;
+    right: -16rem;
     @include small-laptop {
       right: -10rem;
     }
@@ -163,11 +163,11 @@ scroll-icon {
   }
 }
 
-#rascasses {
-  .logo {
-    bottom: 1vh;
-  }
-}
+// #rascasses {
+//   .logo {
+//     bottom: 1vh;
+//   }
+// }
 
 sub-nav {
   @include tablet-portrait {

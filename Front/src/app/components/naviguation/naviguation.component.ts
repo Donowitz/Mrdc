@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NavigationStart, Router } from '@angular/router';
 import { AuthService } from 'src/app/core/backend/services/auth.service';
+import { UserService } from 'src/app/core/backend/services/user.service';
 
 @Component({
   selector: 'naviguation',
@@ -15,8 +16,8 @@ export class NaviguationComponent implements OnInit {
   @Input() menuColor: string;
   toggleMenu: Boolean = false;
   routeArray = [
-    { name: 'Quezako le roller derby', route: 'quezako' },
-    { name: 'Le club', route: 'le-club' },
+    //{ name: 'Quezako le roller derby', route: 'quezako' },
+    //{ name: 'Le club', route: 'le-club' },
     { name: 'Nos équipes', route: 'nos-equipes' },
     { name: 'Nous rejoindre', route: 'nous-rejoindre' },
     { name: 'Partenariat', route: 'partenariat' },
@@ -27,11 +28,10 @@ export class NaviguationComponent implements OnInit {
   indexRouteSelected: number;
   i = 0;
 
-  admin = true;
-
   constructor(
     public readonly router: Router,
-    public readonly authService: AuthService
+    public readonly authService: AuthService,
+    public readonly userService: UserService
   ) {}
 
   ngOnInit(): void {

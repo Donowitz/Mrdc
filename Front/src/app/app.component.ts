@@ -18,8 +18,6 @@ export class AppComponent implements OnInit {
   instagram = faInstagram;
   twitter = faTwitter;
 
-  admin: boolean = true;
-
   constructor(public router: Router) {}
 
   ngOnInit(): void {
@@ -35,6 +33,7 @@ export class AppComponent implements OnInit {
           case '/partenariat':
           case '/medias':
           case '/contact':
+          case '/':
             this.socialsColor = '#fff';
             break;
           default:

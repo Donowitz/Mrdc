@@ -15,16 +15,72 @@
         </p>
       </aside>
       <div class="flex">
-        <div>
-          <!-- <span class="material-icons"> insert_invitation </span> -->
-          <h3>Lundis.</h3>
-          <p>19h à 21h30</p>
-          <p>
-            <span>NewBee &<br />Mars Invaders</span>
-          </p>
+        <div *ngFor="let training of trainings; let i = index">
+          <ng-container *ngIf="!userService.connectedUser">
+            <h3>{{ training.trainingDay }}.</h3>
+            <p>{{ training.trainingTime }}</p>
+            <p>
+              <ng-container *ngFor="let team of training.teams; let a = index">
+                <span>{{ teamList[a].teamName }}</span>
+                <br *ngIf="i === 0 && training.teams.length != 1" />
+                <span *ngIf="i < training.teams.length - 1">&nbsp;&&nbsp;</span>
+              </ng-container>
+            </p>
+          </ng-container>
+          <ng-container *ngIf="userService.connectedUser">
+            <nb-select
+              [selected]="training.trainingDay"
+              fieldSize="small"
+              shape="semi-round"
+              fullWidth
+              [(ngModel)]="trainings[i].trainingDay"
+            >
+              <nb-option value="Lundi">Lundi</nb-option>
+              <nb-option value="Mardi">Mardi</nb-option>
+              <nb-option value="Mercredi">Mercredi</nb-option>
+              <nb-option value="Jeudi">Jeudi</nb-option>
+              <nb-option value="Vendredi">Vendredi</nb-option>
+              <nb-option value="Samedi">Samedi</nb-option>
+              <nb-option value="Dimanche">Dimanche</nb-option>
+            </nb-select>
+            <input
+              nbInput
+              fullWidth
+              type="text"
+              [value]="training.trainingTime"
+              shape="semi-round"
+              [(ngModel)]="trainings[i].trainingTime"
+            />
+            <nb-select
+              multiple
+              fullWidth
+              [(selected)]="training.teams"
+              fieldSize="small"
+              shape="semi-round"
+              [(ngModel)]="trainings[i].teams"
+            >
+              <nb-option
+                *ngFor="let team of teamList; let i = index"
+                [value]="team.id"
+                >{{ team.teamName }}</nb-option
+              >
+            </nb-select>
+            <button
+              *ngIf="userService.connectedUser"
+              nbButton
+              (click)="updateTraining(training.id, trainings[i])"
+              status="info"
+              shape="semi-round"
+              size="large"
+              nbTooltip="Éditer le créneau"
+            >
+              <nb-icon icon="edit-2-outline"></nb-icon>
+            </button>
+          </ng-container>
         </div>
-        <div>
-          <!-- <span class="material-icons"> insert_invitation </span> -->
+
+        <!-- <div>
+
           <h3>Mardis.</h3>
           <p>19h à 21h30</p>
           <p>
@@ -32,13 +88,12 @@
           </p>
         </div>
         <div>
-          <!-- <span class="material-icons"> insert_invitation </span> -->
           <h3>Jeudis.</h3>
           <p>19h à 21h30</p>
           <p>
             <span>Toutes<br />les recrues</span>
           </p>
-        </div>
+        </div> -->
       </div>
       <div class="flex">
         <!-- <a href="https://goo.gl/maps/4LfuYfpnut7zgnuR9"><img src="./../../../assets/map-img.jpg" alt="Map" /></a>-->

@@ -1,7 +1,14 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Training } from 'src/training/training.entity';
+import {
+  Column,
+  Entity,
+  ManyToMany,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity()
-export class Teams {
+export class Team {
   @PrimaryGeneratedColumn('uuid')
   public id: string;
 
@@ -34,4 +41,7 @@ export class Teams {
     nullable: false,
   })
   public isActiveTeam: boolean;
+
+  @ManyToMany((type) => Training, (training) => training.teams)
+  public trainings: Training[];
 }

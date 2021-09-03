@@ -1,10 +1,11 @@
 import { TeamDto } from './../../../../../Back/src/shared/models/dto/teamsDto';
 import { TeamDialogComponent } from './team-dialog/team-dialog.component';
-import { TeamsService } from 'src/app/core/backend/services/teams.service';
+import { TeamService } from 'src/app/core/backend/services/team.service';
 import { AnimationService } from '../../shared/services/animation.service';
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { NbDialogService } from '@nebular/theme';
 import { FormService } from 'src/app/shared/services/form.service';
+import { UserService } from 'src/app/core/backend/services/user.service';
 
 @Component({
   selector: 'teams',
@@ -18,12 +19,12 @@ export class TeamsComponent implements OnInit {
   teams: TeamDto[];
   formResult: TeamDto;
 
-  admin = true;
   constructor(
     private readonly animationService: AnimationService,
-    private readonly teamsService: TeamsService,
+    private readonly teamService: TeamService,
     private readonly dialogService: NbDialogService,
-    private readonly formService: FormService
+    private readonly formService: FormService,
+    public readonly userService: UserService
   ) {}
 
   ngOnInit(): void {
@@ -44,7 +45,7 @@ export class TeamsComponent implements OnInit {
   }
 
   private getAllTeams(): void {
-    this.teamsService.getAllTeams().subscribe((res) => {
+    this.teamService.getAllTeams().subscribe((res) => {
       this.equipeMenu = [];
       this.teams = res.filter((team) => {
         // Set ancres
@@ -54,7 +55,7 @@ export class TeamsComponent implements OnInit {
           this.lastAncre = this.equipeMenu[res.length - 1].ancre;
         }
         // map result depending on logged or not
-        if (this.admin) {
+        if (this.userService.connectedUser) {
           return team;
         } else {
           return team.isActiveTeam === true;

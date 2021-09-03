@@ -12,6 +12,7 @@ import {
   NbLayoutModule,
   NbToastrModule,
   NbTooltipModule,
+  NbSelectModule,
 } from '@nebular/theme';
 
 @NgModule({
@@ -28,6 +29,7 @@ import {
     NbLayoutModule,
     NbToastrModule.forRoot(),
     NbTooltipModule,
+    NbSelectModule,
   ],
   exports: [
     NbCardModule,
@@ -41,6 +43,7 @@ import {
     NbLayoutModule,
     NbToastrModule,
     NbTooltipModule,
+    NbSelectModule,
   ],
   declarations: [],
   providers: [],

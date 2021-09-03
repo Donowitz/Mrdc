@@ -1,18 +1,18 @@
 import { TeamDto, CreateTeamDto } from '../shared/models/dto/teamsDto';
 import { Observable, from } from 'rxjs';
 import { Injectable } from '@nestjs/common';
-import { Teams } from './teams.entity';
+import { Team } from './team.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { DeleteResult, Repository, UpdateResult } from 'typeorm';
 
 @Injectable()
-export class TeamsService {
+export class TeamService {
   constructor(
-    @InjectRepository(Teams)
-    private teamRepository: Repository<Teams>,
+    @InjectRepository(Team)
+    private teamRepository: Repository<Team>,
   ) {}
 
-  getAllTeams(): Promise<Teams[]> {
+  getAllTeams(): Promise<Team[]> {
     return this.teamRepository.find({
       order: {
         order: 'ASC',
@@ -20,11 +20,11 @@ export class TeamsService {
     });
   }
 
-  getOneTeam(teamId: string): Promise<Teams> {
+  getOneTeam(teamId: string): Promise<Team> {
     return this.teamRepository.findOne(teamId);
   }
 
-  createTeam(team: CreateTeamDto): Promise<Teams> {
+  createTeam(team: CreateTeamDto): Promise<Team> {
     return this.teamRepository.save(team);
   }
 

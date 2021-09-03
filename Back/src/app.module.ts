@@ -1,14 +1,17 @@
-import { Medias } from './medias/medias.entity';
-import { MediasModule } from './medias/medias.module';
-import { UsersModule } from './users/users.module';
-import { Teams } from './teams/teams.entity';
-import { TeamsModule } from './teams/teams.module';
+import { AuthModule } from './auth/auth.module';
+import { Media } from './media/media.entity';
+import { MediaModule } from './media/media.module';
+import { UserModule } from './user/user.module';
+import { Team } from './team/team.entity';
+import { TeamModule } from './team/team.module';
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { Users } from './users/users.entity';
+import { User } from './user/user.entity';
+import { TrainingModule } from './training/training.module';
+import { Training } from './training/training.entity';
 
 @Module({
   imports: [
@@ -22,7 +25,7 @@ import { Users } from './users/users.entity';
         database: configService.get('DATABASE_NAME'),
         port: configService.get('DATABASE_PORT'),
 
-        entities: [Teams, Users, Medias],
+        entities: [Team, User, Media, Training],
         synchronize: true,
       }),
       inject: [ConfigService],
@@ -30,12 +33,13 @@ import { Users } from './users/users.entity';
 
     ConfigModule.forRoot({
       isGlobal: true,
-      // [TODO:] Set NODE_ENV on server => https://riptutorial.com/node-js/example/10101/setting-node-env--production-
       envFilePath: `${process.env.NODE_ENV || 'development'}.env`,
     }),
-    TeamsModule,
-    UsersModule,
-    MediasModule,
+    TeamModule,
+    UserModule,
+    MediaModule,
+    TrainingModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
