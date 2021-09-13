@@ -22,21 +22,11 @@ export class TrainingController {
     return this.trainingService.getAllTrainings();
   }
 
-  //   @Post()
-  //   async createTeam(@Body() team: CreateTeamDto): Promise<TeamDto> {
-  //     return this.trainingService.createTeam(team);
-  //   }
-
   @Put(':id')
   updateTraining(
     @Param('id') id: string,
     @Body() partialTraining: Partial<TrainingDto>,
-  ): Promise<UpdateResult> {
+  ) {
     return this.trainingService.updateTraining(id, partialTraining);
   }
-
-  //   @Delete(':teamId')
-  //   deleteTeam(@Param('teamId') teamId: string) {
-  //     this.teamService.deleteTeam(teamId);
-  //   }
 }

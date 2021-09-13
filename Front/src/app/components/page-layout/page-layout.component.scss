@@ -31,6 +31,7 @@ section {
     overflow: auto;
     display: flex;
     flex-direction: column;
+    position: relative;
 
     @include tablet-landscape {
       width: 55%;

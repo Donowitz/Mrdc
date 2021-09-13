@@ -31,7 +31,7 @@ export class AuthGuard implements CanActivate {
         } else {
           if (!this.userService.connectedUser) {
             return this.authService.getToken().pipe(
-              tap((token) => console.log(token)),
+              //tap((token) => console.log(token)),
               mergeMap((token: NbAuthJWTToken) => {
                 this.user = token.getPayload();
                 if (this.user) {

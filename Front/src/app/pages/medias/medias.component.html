@@ -1,5 +1,123 @@
 <page-layout [pageContent]="mediasContent" [imgSrc]="mediasBgImg">
   <ng-template #mediasContent>
+    <div class="overlay" [ngStyle]="{ height: toggleMediaForm ? '100%' : '0' }">
+      <form [formGroup]="mediaForm">
+        <div>
+          <input
+            nbInput
+            fullWidth
+            shape="semi-round"
+            formControlName="magazine"
+            placeholder="Nom du magazine de parution"
+          />
+          <ng-container
+            *ngIf="
+              mediaForm.get('magazine').invalid &&
+              (mediaForm.get('magazine').dirty ||
+                mediaForm.get('magazine').touched)
+            "
+          >
+            <p
+              class="error-msg"
+              *ngIf="mediaForm.get('magazine').errors.required"
+            >
+              <nb-icon icon="alert-circle-outline"></nb-icon> Nom du magazine
+              requis
+            </p>
+          </ng-container>
+        </div>
+        <div>
+          <input
+            nbInput
+            fullWidth
+            shape="semi-round"
+            formControlName="articleTitle"
+            placeholder="Titre de l'article"
+          />
+          <ng-container
+            *ngIf="
+              mediaForm.get('articleTitle').invalid &&
+              (mediaForm.get('articleTitle').dirty ||
+                mediaForm.get('articleTitle').touched)
+            "
+          >
+            <p
+              class="error-msg"
+              *ngIf="mediaForm.get('articleTitle').errors.required"
+            >
+              <nb-icon icon="alert-circle-outline"></nb-icon> Titre requis
+            </p>
+          </ng-container>
+        </div>
+        <div>
+          <input
+            nbInput
+            fullWidth
+            shape="semi-round"
+            formControlName="url"
+            placeholder="Lien de l'article"
+          />
+          <ng-container
+            *ngIf="
+              mediaForm.get('url').invalid &&
+              (mediaForm.get('url').dirty || mediaForm.get('url').touched)
+            "
+          >
+            <p class="error-msg" *ngIf="mediaForm.get('url').errors">
+              <nb-icon icon="alert-circle-outline"></nb-icon> Url invalide
+            </p>
+            <p
+              class="error-msg"
+              *ngIf="mediaForm.get('magazine').errors.required"
+            >
+              <nb-icon icon="alert-circle-outline"></nb-icon> Lien requis
+            </p>
+          </ng-container>
+        </div>
+        <div>
+          <input
+            nbInput
+            fullWidth
+            placeholder="Date de publication"
+            [nbDatepicker]="dateTimePicker"
+            shape="semi-round"
+            formControlName="date"
+          />
+          <nb-datepicker #dateTimePicker></nb-datepicker>
+          <ng-container
+            *ngIf="
+              mediaForm.get('date').invalid &&
+              (mediaForm.get('date').dirty || mediaForm.get('date').touched)
+            "
+          >
+            <p class="error-msg" *ngIf="mediaForm.get('date').errors.required">
+              <nb-icon icon="alert-circle-outline"></nb-icon> Date de parution
+              requise
+            </p>
+          </ng-container>
+        </div>
+      </form>
+      <button
+        nbButton
+        status="info"
+        (click)="saveMedia()"
+        [disabled]="!mediaForm.valid"
+      >
+        Créer
+      </button>
+    </div>
+    <ng-container *ngIf="userService.connectedUser">
+      <button
+        nbButton
+        (click)="toggleMediaForm = !toggleMediaForm"
+        class="add-button"
+        status="primary"
+        shape="rectangle"
+        nbTooltip="Ajouter un article"
+      >
+        <nb-icon icon="plus-outline"></nb-icon>
+      </button>
+    </ng-container>
     <div class="flex">
       <article>
         <h1>ils parlent <br />de nous</h1>

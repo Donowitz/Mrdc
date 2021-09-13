@@ -28,6 +28,7 @@ export class NousRejoindreComponent implements OnInit, AfterViewInit {
   trainings: TrainingDto[];
   trainingDays = TrainingDays;
   trainingForm: FormGroup[];
+  teamUpdate;
 
   @HostListener('window:resize', ['$event'])
   onResize(event) {
@@ -48,10 +49,16 @@ export class NousRejoindreComponent implements OnInit, AfterViewInit {
   ) {}
 
   ngOnInit() {
-    this.teamService.getAllTeams().subscribe((r) => (this.teamList = r));
-    this.trainingService
-      .getAllTrainings()
-      .subscribe((r) => { this.trainings = r; console.log(r) });
+    this.teamService.getAllTeams().subscribe(
+      (teams) =>
+        (this.teamList = teams.filter((team) => {
+          return team.teamName != 'Rascasses';
+        }))
+    );
+    this.trainingService.getAllTrainings().subscribe((r) => {
+      this.trainings = r;
+      console.log(r);
+    });
   }
 
   ngAfterViewInit() {
@@ -64,8 +71,15 @@ export class NousRejoindreComponent implements OnInit, AfterViewInit {
   }
 
   updateTraining(trainingId: string, trainingInfo) {
+    let updatedTraining = { ...trainingInfo };
+    if (!this.teamUpdate) {
+      delete updatedTraining.teams;
+    }
     this.trainingService
-      .updateTraining(trainingId, trainingInfo)
-      .subscribe((r) => this.formService.saveEvent('Le créneau est édité'));
+      .updateTraining(trainingId, updatedTraining)
+      .subscribe((r) => {
+        this.formService.saveEvent('Le créneau est édité');
+        this.teamUpdate = false;
+      });
   }
 }

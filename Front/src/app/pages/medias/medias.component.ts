@@ -2,44 +2,57 @@ import { Router } from '@angular/router';
 import { MediaDto } from './../../../../../Back/src/shared/models/dto/mediasDto';
 import { Component, OnInit } from '@angular/core';
 import { MediaService } from 'src/app/core/backend/services/media.service';
+import { UserService } from 'src/app/core/backend/services/user.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormService } from 'src/app/shared/services/form.service';
 
 @Component({
   selector: 'medias',
   templateUrl: 'medias.component.html',
-  styleUrls: ['./medias.component.scss'],
+  styleUrls: ['./medias.component.scss', '../../shared/scss/global.scss'],
 })
 export class MediasComponent implements OnInit {
   articles: MediaDto[];
-  // listeActicles = [
-  //   {
-  //     magazine: 'Made in Marseille',
-  //     titre: `Marseille Roller Derby : (presque) tous les coups sont permis !`,
-  //     lien: 'https://madeinmarseille.net/32874-roller-derby-club/',
-  //   },
-  //   {
-  //     magazine: 'Huffington Post',
-  //     titre: `8 raisons pour lesquelles nous souhaitons rencontrer l'équipe égyptienne de Roller Derby`,
-  //     liene:
-  //       'https://www.huffingtonpost.fr/margaid-quioc/8-raisons-pour-lesquelles-nous-souhaitons-rencontrer-lequipe-eg_a_21874400/',
-  //   },
-  //   {
-  //     magazine: 'La provence',
-  //     titre: `Marseille : roller derby, dans l'antre des Bloody Skulls `,
-  //     lien:
-  //       'https://www.laprovence.com/article/sports/2039767/marseille-roller-derby-dans-lantre-des-bloody-skulls.html',
-  //   },
-  // ];
   mediasBgImg: string;
+  mediaForm: FormGroup;
+  toggleMediaForm: boolean = false;
 
   constructor(
     private readonly mediaService: MediaService,
-    public readonly router: Router
+    public readonly router: Router,
+    public readonly userService: UserService,
+    private readonly fb: FormBuilder,
+    private readonly formService: FormService
   ) {}
 
   ngOnInit() {
     this.mediasBgImg = './../../../assets/media.jpg';
     this.mediaService.getAllMedias().subscribe((res) => {
       this.articles = res;
+    });
+
+    this.mediaForm = this.fb.group({
+      magazine: ['', [Validators.required]],
+      articleTitle: ['', [Validators.required]],
+      url: [
+        '',
+        [
+          Validators.pattern(
+            '(http?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?'
+          ),
+        ],
+      ],
+      date: ['', [Validators.required]],
+    });
+  }
+
+  saveMedia() {
+    this.mediaService.addMedia(this.mediaForm.value).subscribe((r) => {
+      this.formService.saveEvent(`L'article à bien été ajouté`);
+      this.toggleMediaForm = false;
+      this.mediaService.getAllMedias().subscribe((res) => {
+        this.articles = res;
+      });
     });
   }
 }

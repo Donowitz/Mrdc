@@ -2,6 +2,7 @@ import { Training } from 'src/training/training.entity';
 import {
   Column,
   Entity,
+  JoinTable,
   ManyToMany,
   OneToMany,
   PrimaryGeneratedColumn,

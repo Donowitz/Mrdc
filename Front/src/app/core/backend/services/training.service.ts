@@ -20,18 +20,10 @@ export class TrainingService {
     return this.api.get(`${this.apiController}`);
   }
 
-  // createTeam(team: CreateTeamDto) {
-  //   return this.api.post(`${this.apiController}`, team);
-  // }
-
   updateTraining(
     trainingId: string,
     partialTraining: Partial<TrainingDto>
   ): Observable<any> {
     return this.api.put(`${this.apiController}/${trainingId}`, partialTraining);
   }
-
-  // deleteTeam(teamId: string): Observable<any> {
-  //   return this.api.delete(`${this.apiController}/${teamId}`);
-  // }
 }

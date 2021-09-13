@@ -10,7 +10,7 @@ import { UserService } from 'src/app/core/backend/services/user.service';
 @Component({
   selector: 'teams',
   templateUrl: 'teams.component.html',
-  styleUrls: ['./teams.component.scss'],
+  styleUrls: ['./teams.component.scss', '../../shared/scss/global.scss'],
 })
 export class TeamsComponent implements OnInit {
   equipeMenu: any[] = [];
@@ -56,7 +56,7 @@ export class TeamsComponent implements OnInit {
         }
         // map result depending on logged or not
         if (this.userService.connectedUser) {
-          return team;
+          return team.teamName != 'Newbee';
         } else {
           return team.isActiveTeam === true;
         }

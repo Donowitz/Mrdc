@@ -57,6 +57,7 @@ $nb-themes: nb-register-theme(
     color-primary-default: #009de4,
     color-primary-600: #fff,
     color-primary-hover: #1289c1,
+    color-primary-active: #009de4,
     color-info-default: #e9c341,
     color-info-600: rgb(55, 55, 55),
     color-info-hover: #d3ae31,
@@ -69,3 +70,18 @@ $nb-themes: nb-register-theme(
   default,
   default
 );
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #e9c341 transparent;
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: #e8e6ff;
+    border-radius: 10px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #e9c341;
+    border-radius: 10px;
+  }
+}

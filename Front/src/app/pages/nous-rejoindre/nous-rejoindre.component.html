@@ -22,8 +22,8 @@
             <p>
               <ng-container *ngFor="let team of training.teams; let a = index">
                 <span>{{ teamList[a].teamName }}</span>
-                <br *ngIf="i === 0 && training.teams.length != 1" />
-                <span *ngIf="i < training.teams.length - 1">&nbsp;&&nbsp;</span>
+                <br *ngIf="a === 0 && training.teams.length != 1" />
+                <span *ngIf="a < training.teams.length - 1">&nbsp;&&nbsp;</span>
               </ng-container>
             </p>
           </ng-container>
@@ -58,6 +58,7 @@
               fieldSize="small"
               shape="semi-round"
               [(ngModel)]="trainings[i].teams"
+              (ngModelChange)="teamUpdate = true"
             >
               <nb-option
                 *ngFor="let team of teamList; let i = index"

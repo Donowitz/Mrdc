@@ -3,9 +3,9 @@
     <button
       nbButton
       (click)="openTeamPopup()"
-      class="add-team"
+      class="add-button"
       status="primary"
-      shape="round"
+      shape="rectangle"
       nbTooltip="Ajouter une équipe"
     >
       <nb-icon icon="plus-outline"></nb-icon>
@@ -17,13 +17,12 @@
     [route]="'/nos-equipes'"
     [elementNumber]="teams.length"
   ></sub-nav>
-  <scroll-icon *ngIf="showScroll"></scroll-icon>
   <article
     id="{{ equipeMenu[i].ancre }}"
     *ngFor="let team of teams; let i = index"
   >
     <img
-      src="./../../../assets/equipes/bloody-skull.jpg"
+      [src]="'./../../../assets/equipes/' + equipeMenu[i].ancre + '.jpg'"
       [alt]="team.teamName"
       class="team-img"
     />

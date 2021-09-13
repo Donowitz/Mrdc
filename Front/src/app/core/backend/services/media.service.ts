@@ -21,15 +21,4 @@ export class MediaService {
   addMedia(media: CreateMediaDto) {
     return this.api.post(`${this.apiController}`, media);
   }
-
-  // updateUser(
-  //   teamId: string,
-  //   partialTeam: Partial<CreateUserDto>
-  // ): Observable<any> {
-  //   return this.api.put(`${this.apiController}/${teamId}`, partialTeam);
-  // }
-
-  // deleteUser(teamId: string): Observable<any> {
-  //   return this.api.delete(teamId);
-  // }
 }
