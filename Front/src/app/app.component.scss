@@ -1,48 +1,4 @@
 @import "./shared/scss/mixin.scss";
-@import "../themes.scss";
-
-h1 {
-  text-transform: uppercase;
-  margin: 0;
-}
-h3 {
-  text-align: center;
-  //margin: 0.2rem 0;
-}
-
-a {
-  color: nb-theme(text-basic-color);
-  cursor: pointer;
-  text-decoration: none;
-  margin: 0;
-  &:hover {
-    color: #e9c341;
-  }
-}
-
-.flex {
-  display: flex;
-  align-items: center;
-  height: 100%;
-  padding: 0 3vw;
-  overflow-x: hidden;
-  @include tablet-portrait {
-    align-items: flex-start;
-  }
-}
-
-.intro-container {
-  border-left: solid #fff 1px;
-  width: 88%;
-  float: right;
-  padding: 0 1rem;
-}
-
-.error-msg {
-  color: #ba2020;
-  font-style: italic;
-  font-size: 1rem;
-}
 
 .head {
   width: 100vw;
@@ -71,12 +27,7 @@ ul {
   width: 10%;
   max-width: 4rem;
   @include tablet-portrait {
-    width: 40%;
-    text-align: right;
-    top: 2.5rem;
-    margin: 0;
-    padding: 0;
-    right: 3rem;
+    display: none;
   }
   li {
     margin: 1rem 0;

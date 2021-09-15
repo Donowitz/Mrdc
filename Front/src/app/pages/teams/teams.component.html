@@ -1,4 +1,4 @@
-<section *ngIf="teams">
+<section *ngIf="teams" class="slide">
   <ng-container *ngIf="userService.connectedUser">
     <button
       nbButton
@@ -21,47 +21,51 @@
     id="{{ equipeMenu[i].ancre }}"
     *ngFor="let team of teams; let i = index"
   >
-    <img
-      [src]="'./../../../assets/equipes/' + equipeMenu[i].ancre + '.jpg'"
-      [alt]="team.teamName"
-      class="team-img"
-    />
-    <div class="blue-background">
+    <div class="team-img">
+      <img
+        [src]="'./../../../assets/equipes/' + equipeMenu[i].ancre + '.jpg'"
+        [alt]="team.teamName"
+      />
+    </div>
+    <div class="team-info">
+      <div class="blue-background">
+        <h1 class="white-text">
+          <button
+            *ngIf="userService.connectedUser"
+            nbButton
+            (click)="openTeamPopup(team.id)"
+            status="info"
+            shape="semi-round"
+            size="large"
+            class="edit-team"
+            nbTooltip="Éditer l'équipe"
+          >
+            <nb-icon icon="edit-2-outline"></nb-icon>
+          </button>
+          {{ team.teamName }}
+        </h1>
+        <div class="intro-container">
+          <p class="white-text">{{ team.teamStory }}</p>
+          <a
+            *ngIf="team.flatTrackUrl"
+            href="{{ team.flatTrackUrl }}"
+            target="_blank"
+            class="white-text"
+            >Tous les résultats des {{ team.teamName }} ></a
+          >
+          <a
+            *ngIf="team.teamName === 'Chapacans'"
+            href="http://flattrackstats.com/teams/112544"
+            target="_blank"
+            class="white-text"
+            >Tous les résultats des des Gerbes de Provence ></a
+          >
+        </div>
+      </div>
       <img
         [src]="'./../../../assets/equipes/logo_' + equipeMenu[i].ancre + '.png'"
         [alt]="'Logo' + team.teamName"
-        class="logo"
       />
-      <h1>
-        <button
-          *ngIf="userService.connectedUser"
-          nbButton
-          (click)="openTeamPopup(team.id)"
-          status="info"
-          shape="semi-round"
-          size="large"
-          class="edit-team"
-          nbTooltip="Éditer l'équipe"
-        >
-          <nb-icon icon="edit-2-outline"></nb-icon>
-        </button>
-        {{ team.teamName }}
-      </h1>
-      <div class="intro-container">
-        <p>{{ team.teamStory }}</p>
-        <a
-          *ngIf="team.flatTrackUrl"
-          href="{{ team.flatTrackUrl }}"
-          target="_blank"
-          >Tous les résultats des {{ team.teamName }} ></a
-        >
-        <a
-          *ngIf="team.teamName === 'Chapacans'"
-          href="http://flattrackstats.com/teams/112544"
-          target="_blank"
-          >Tous les résultats des des Gerbes de Provence ></a
-        >
-      </div>
     </div>
   </article>
 </section>

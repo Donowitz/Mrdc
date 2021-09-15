@@ -19,10 +19,9 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 @Component({
   selector: 'nous-rejoindre',
   templateUrl: 'nous-rejoindre.component.html',
-  styleUrls: ['nous-rejoindre.component.scss'],
+  styleUrls: ['nous-rejoindre.component.scss', '../../shared/scss/global.scss'],
 })
 export class NousRejoindreComponent implements OnInit, AfterViewInit {
-  joinImg = './../../../assets/nous-rejoindre.jpg';
   article: HTMLElement;
   teamList: TeamDto[] = [];
   trainings: TrainingDto[];

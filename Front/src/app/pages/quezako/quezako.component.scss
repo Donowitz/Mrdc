@@ -1,1 +1,14 @@
 @import "../../shared/scss/mixin.scss";
+
+.team-info {
+  justify-content: flex-end;
+}
+
+section.slide article.origines,
+section.slide article.origines article {
+  padding: 0;
+}
+
+section.slide article.origines article {
+  height: auto;
+}

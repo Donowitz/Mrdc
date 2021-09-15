@@ -1,21 +1,19 @@
-<section>
+<section class="slide">
   <sub-nav
     [menu]="menu"
     [route]="'/quezako'"
     [elementNumber]="menu.length"
   ></sub-nav>
   <!-- <scroll-icon></scroll-icon> -->
-  <article id="intro">
-    <div>
-      <img
-        src="./../../../assets/quezako.jpg"
-        alt="Bloody Skulls"
-        class="team"
-      />
+  <article>
+    <div class="team-img">
+      <img src="./../../../assets/quezako.jpg" alt="Bloody Skulls" />
+    </div>
+    <div class="team-info">
       <div class="blue-background">
-        <h1>Quezako le <br />roller derby</h1>
+        <h1 class="white-text">Quezako le <br />roller derby</h1>
         <div class="intro-container">
-          <p>
+          <p class="white-text">
             Le roller derby est un sport d'équipe de contact se pratiquant en
             patins à roulettes quads sur une piste de forme oblongue, le but du
             jeu étant pour l'une des joueuses de réussir à dépasser en un laps
@@ -25,5 +23,43 @@
         </div>
       </div>
     </div>
+  </article>
+  <article class="origines">
+    <page-layout
+      [pageContent]="partenariatContent"
+      imgSrc="../../../assets/Roller.jpeg"
+    >
+      <ng-template #partenariatContent>
+        <div class="flex">
+          <article>
+            <h1>Origines</h1>
+            <p>
+              Né aux États-Unis pendant la la Grande Dépression de 1929. D’abord
+              sous forme d’une sorte de Marathon offrant la possibilité de se
+              pousser et se donner des coups de coude. En France, il apparaitra
+              sous la forme d’un « roller catch ». Deux équipes s’affrontent, de
+              façon brutale : coups de coude, d’épaule, croche-pied…
+            </p>
+            <p>
+              Il faudra attendre l’an 2000 pour voir la naissance du roller
+              derby dans sa version moderne. Les joueuses se costument et
+              adoptent des noms de scène. Plusieurs autres univers se mélangent
+              : rock, punk, pin-up, films d’horreur… La volonté d’émancipation
+              féministe, face à un univers sportif très masculin, n’est pas
+              loin.
+            </p>
+            <p>
+              En décembre 2010, la Fédération internationale de roller sports
+              (FIRS), une filiale du Comité international olympique reconnait le
+              roller derby comme un sport légitime.<br />
+              Décembre 2014 : le roller derby est officiellement reconnu comme
+              discipline au sein de la fédération française de roller sport et
+              compte désormais son propre comité directeur. Depuis lors, le MRDC
+              est affilié à la FFRS.
+            </p>
+          </article>
+        </div>
+      </ng-template>
+    </page-layout>
   </article>
 </section>

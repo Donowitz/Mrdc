@@ -13,7 +13,6 @@ import { FormService } from 'src/app/shared/services/form.service';
 })
 export class MediasComponent implements OnInit {
   articles: MediaDto[];
-  mediasBgImg: string;
   mediaForm: FormGroup;
   toggleMediaForm: boolean = false;
 
@@ -26,7 +25,6 @@ export class MediasComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.mediasBgImg = './../../../assets/media.jpg';
     this.mediaService.getAllMedias().subscribe((res) => {
       this.articles = res;
     });

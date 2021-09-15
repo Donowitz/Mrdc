@@ -1,12 +1,10 @@
 @import "./../../shared/scss/mixin.scss";
-@import "./../../app.component.scss";
 
 section {
   background-image: url("./../../../assets/home.jpg");
   background-size: cover;
   height: 100vh;
   position: relative;
-  //overflow: hidden;
 
   &:after {
     position: absolute;
@@ -41,10 +39,6 @@ article {
   }
 }
 
-h1,
-p {
-  color: #fff;
-}
 h1 {
   margin: 0;
 }

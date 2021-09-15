@@ -1,86 +1,17 @@
-@import "./../../app.component.scss";
+@import "../../shared/scss/mixin.scss";
 
-section {
-  height: 85vh;
-  display: block;
-  overflow-y: scroll;
-  scroll-snap-type: y mandatory;
-  scroll-behavior: smooth;
-  margin-top: 15vh;
-}
-
-article {
-  height: 100%;
-  scroll-snap-align: center;
-  padding: 0 5rem 2rem;
-  overflow: auto;
+.team-info img {
   position: relative;
-
-  @include tablet-portrait {
-    padding: 0 2rem;
-  }
-  @include phone-only {
-    padding: 0;
-  }
-}
-
-.team-img {
-  height: 50vh;
-  @include small-laptop {
-    height: 55vh;
-  }
-  @include tablet-portrait {
-    width: 100%;
-    height: auto;
-  }
-}
-
-.blue-background {
-  background-color: rgba(0, 158, 225, 0.8);
-  padding: 1.2rem;
-  width: 60%;
-  max-width: 55rem;
-  z-index: 3;
-  position: absolute;
-  top: 40%;
-  @include tablet-landscape {
-    min-width: 40rem;
-  }
-  @include tablet-portrait {
-    min-width: 33rem;
-  }
-  @include phone-only {
-    top: 14rem;
-    padding-top: 15rem;
-    min-width: 100%;
-    min-height: 55rem;
-  }
-}
-
-.logo {
-  position: absolute;
   z-index: 2;
   width: 40%;
-  max-width: 25rem;
+  max-width: 20rem;
   min-width: 16rem;
-  top: 0;
   @include small-laptop {
     max-width: 16rem;
   }
-  @include phone-only {
-    top: -5rem;
+  @include tablet-portrait {
+    padding: 0 2rem;
   }
-}
-
-h1,
-p,
-a {
-  color: #fff;
-}
-
-h1 {
-  display: flex;
-  align-items: center;
 }
 
 .edit-team {
@@ -94,73 +25,40 @@ a {
   margin: 1vh 0;
 }
 
-article:nth-child(odd) {
-  .logo {
-    left: -19rem;
-    @include small-laptop {
-      left: -10rem;
-    }
-    @include phone-only {
-      left: 50%;
-      transform: translateX(-50%);
-    }
+.team-info img {
+  @include tablet-portrait {
+    display: none;
   }
-  .blue-background {
-    right: 5rem;
-    @include phone-only {
-      right: 0;
+}
+
+article:nth-child(odd) {
+  .team-info {
+    justify-content: flex-end;
+    .blue-background {
+      order: 2;
+    }
+
+    img {
+      order: 1;
+      margin-right: -6rem;
     }
   }
 }
 
 article:nth-child(even) {
-  img:not(.logo) {
-    float: right;
+  .team-img {
+    text-align: right;
   }
-  .blue-background {
-    left: 5rem;
-    padding-right: 3vw;
-    @include phone-only {
-      left: 0;
+
+  .team-info {
+    img {
+      margin-left: -6rem;
     }
     p {
       width: 90%;
     }
   }
-  .logo {
-    right: -16rem;
-    @include small-laptop {
-      right: -10rem;
-    }
-    @include tablet-portrait {
-      right: -8rem;
-    }
-    @include phone-only {
-      right: O;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-  }
 }
-
-scroll-icon {
-  position: absolute;
-  bottom: 0;
-  right: 1.5vw;
-  @include tablet-portrait {
-    left: 1.5vw;
-    right: auto;
-  }
-  @include phone-only {
-    display: none;
-  }
-}
-
-// #rascasses {
-//   .logo {
-//     bottom: 1vh;
-//   }
-// }
 
 sub-nav {
   @include tablet-portrait {

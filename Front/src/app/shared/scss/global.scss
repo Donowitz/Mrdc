@@ -1,6 +1,130 @@
+@import "./mixin.scss";
+@import "../../../themes.scss";
+
+h1 {
+  text-transform: uppercase;
+  margin: 0;
+}
+h3 {
+  text-align: center;
+  //margin: 0.2rem 0;
+}
+
+a {
+  color: nb-theme(text-basic-color);
+  cursor: pointer;
+  text-decoration: none;
+  margin: 0;
+  &:hover {
+    color: #e9c341;
+  }
+}
+
+.white-text {
+  color: #fff;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 3vw;
+  overflow-x: hidden;
+  @include tablet-portrait {
+    align-items: flex-start;
+  }
+}
+
+.intro-container {
+  border-left: solid #fff 1px;
+  width: 88%;
+  float: right;
+  padding: 0 1rem;
+}
+
+.error-msg {
+  color: #ba2020;
+  font-style: italic;
+  font-size: 1rem;
+}
+
 .add-button {
   position: absolute;
   bottom: 0;
   width: 100%;
   z-index: 20;
+}
+
+section.slide {
+  height: 85vh;
+  display: block;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  margin-top: 15vh;
+
+  @include tablet-portrait {
+    margin-top: 10vh;
+  }
+
+  article {
+    height: 100%;
+    scroll-snap-align: center;
+    padding: 0 20rem 2rem;
+    overflow: auto;
+    position: relative;
+    overflow: hidden;
+
+    @include desktop {
+      padding: 0 15rem 2rem;
+    }
+    @include laptop {
+      padding: 0 6rem 2rem;
+    }
+    @include tablet-portrait {
+      padding: 0 2rem;
+    }
+    @include phone-only {
+      padding: 0;
+      overflow: auto;
+    }
+
+    > div {
+      width: 100%;
+      position: relative;
+
+      &.team-img {
+        max-height: 50vh;
+
+        img {
+          width: 100%;
+          max-width: 50rem;
+        }
+      }
+
+      &.team-info {
+        height: 40vh;
+        margin-top: -5rem;
+        z-index: 4;
+        display: flex;
+        align-items: center;
+
+        @include tablet-portrait {
+          height: auto;
+        }
+      }
+    }
+  }
+}
+
+.blue-background {
+  background-color: rgba(0, 158, 225, 0.8);
+  padding: 1.2rem 4rem 1.2rem;
+  width: 70%;
+  height: 100%;
+  position: relative;
+
+  @include tablet-portrait {
+    width: 100%;
+  }
 }

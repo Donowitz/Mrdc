@@ -1,15 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'partenariat',
   templateUrl: 'partenariat.component.html',
-  styleUrls: ['./partenariat.component.scss'],
+  styleUrls: ['./partenariat.component.scss', '../../shared/scss/global.scss'],
 })
-export class PartenariatComponent implements OnInit {
-  partenariatBgImg: string;
+export class PartenariatComponent {
   constructor() {}
-
-  ngOnInit() {
-    this.partenariatBgImg = './../../../assets/partenariat.jpg';
-  }
 }

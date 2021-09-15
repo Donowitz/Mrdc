@@ -5,10 +5,9 @@ import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 @Component({
   selector: 'contact',
   templateUrl: 'contact.component.html',
-  styleUrls: ['./contact.component.scss', '../../app.component.scss'],
+  styleUrls: ['./contact.component.scss', '../../shared/scss/global.scss'],
 })
 export class ContactComponent implements OnInit {
-  contactBgImg: string;
   form: FormGroup;
   isFormValid = false;
 
@@ -18,8 +17,6 @@ export class ContactComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.contactBgImg = './../../../assets/contact.jpg';
-
     this.form = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]],
