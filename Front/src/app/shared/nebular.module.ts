@@ -1,3 +1,4 @@
+import { OverlayContainer } from '@angular/cdk/overlay';
 import { NgModule } from '@angular/core';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import {
@@ -11,7 +12,6 @@ import {
   NbDialogModule,
   NbLayoutModule,
   NbToastrModule,
-  NbTooltipModule,
   NbSelectModule,
   NbDatepickerModule,
 } from '@nebular/theme';
@@ -29,7 +29,6 @@ import {
     NbDialogModule.forRoot(),
     NbLayoutModule,
     NbToastrModule.forRoot(),
-    NbTooltipModule,
     NbSelectModule,
     NbDatepickerModule.forRoot(),
   ],
@@ -44,7 +43,6 @@ import {
     NbDialogModule,
     NbLayoutModule,
     NbToastrModule,
-    NbTooltipModule,
     NbSelectModule,
     NbDatepickerModule,
   ],

@@ -79,6 +79,26 @@
         >Afficher sur le site</nb-checkbox
       >
     </form>
+    <div class="file">
+      <div *ngIf="logoToUpload" class="overlay">
+        <span
+          ><nb-icon icon="file-outline"></nb-icon>{{ logoToUpload.name }}</span
+        >
+      </div>
+      <nb-icon icon="upload-outline"></nb-icon>
+      <span>Télécharger le logo de l'équipe</span>
+      <input type="file" (change)="uploadFile($event.target.files, 'logo')" />
+    </div>
+    <div class="file">
+      <div *ngIf="imgToUpload" class="overlay">
+        <span
+          ><nb-icon icon="file-outline"></nb-icon>{{ imgToUpload.name }}</span
+        >
+      </div>
+      <nb-icon icon="upload-outline"></nb-icon>
+      <span>Télécharger une photo de l'équipe</span>
+      <input type="file" (change)="uploadFile($event.target.files)" />
+    </div>
   </nb-card-body>
   <nb-card-footer>
     <!-- <span *ngIf="teamId" (click)="deleteTeam()" class="error-msg"

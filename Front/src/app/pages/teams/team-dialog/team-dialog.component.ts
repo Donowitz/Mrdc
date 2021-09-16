@@ -6,11 +6,16 @@ import { NbDialogRef } from '@nebular/theme';
 @Component({
   selector: 'team-dialog',
   templateUrl: 'team-dialog.component.html',
-  styleUrls: ['./team-dialog.component.scss', '../../../app.component.scss'],
+  styleUrls: [
+    './team-dialog.component.scss',
+    '../../../shared/scss/global.scss',
+  ],
 })
 export class TeamDialogComponent implements OnInit {
   @Input() teamId: string;
   teamForm: FormGroup;
+  imgToUpload: any;
+  logoToUpload: any;
 
   constructor(
     private readonly fb: FormBuilder,
@@ -39,25 +44,45 @@ export class TeamDialogComponent implements OnInit {
     }
   }
 
-  closeDialog() {
+  closeDialog(): void {
     this.dialogRef.close();
   }
 
+  uploadFile(fileList: Array<any>, type?: string): void {
+    if (fileList.length > 0) {
+      if (type) this.logoToUpload = fileList[0];
+      else this.imgToUpload = fileList[0];
+    }
+  }
+
   saveTeam(): void {
-    this.teamService.createTeam(this.teamForm.value).subscribe(() => {
+    this.teamService.createTeam(this.teamForm.value).subscribe((newTeam) => {
+      if (this.logoToUpload)
+        this.teamService
+          .uploadImage(this.logoToUpload, newTeam.id, 'logo')
+          .subscribe();
+      if (this.imgToUpload)
+        this.teamService.uploadImage(this.imgToUpload, newTeam.id).subscribe();
       this.dialogRef.close('Nouvelle équipe crée.');
     });
   }
 
-  updateTeam() {
+  updateTeam(): void {
     this.teamService
       .updateTeam(this.teamId, this.teamForm.value)
       .subscribe(() => {
         this.dialogRef.close('Les modifications sont bien enregistrées.');
       });
+
+    if (this.logoToUpload)
+      this.teamService
+        .uploadImage(this.logoToUpload, this.teamId, 'logo')
+        .subscribe();
+    if (this.imgToUpload)
+      this.teamService.uploadImage(this.imgToUpload, this.teamId).subscribe();
   }
 
-  deleteTeam() {
+  deleteTeam(): void {
     this.teamService.deleteTeam(this.teamId).subscribe(() => {
       this.dialogRef.close(
         `L'équipe ${this.teamForm.value.teamName} à été supprimée.`

@@ -1,6 +1,6 @@
 @import "./shared/scss/mixin.scss";
 
-.head {
+header {
   width: 100vw;
   position: fixed;
   top: 0;
@@ -19,6 +19,7 @@
   }
 }
 
+//socials icons
 ul {
   position: fixed;
   z-index: 5;
@@ -29,18 +30,9 @@ ul {
   @include tablet-portrait {
     display: none;
   }
-  li {
+
+  li,
+  li a {
     margin: 1rem 0;
-    @include tablet-portrait {
-      display: inline-block;
-      padding: 0 1rem;
-    }
-    @include phone-only {
-      margin: 0;
-    }
-    a {
-      text-decoration: none;
-      margin: 1rem auto;
-    }
   }
 }

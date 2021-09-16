@@ -27,6 +27,8 @@ h1 {
     width: 70%;
   }
 }
+
+// Form
 input,
 textarea {
   width: 100%;
@@ -36,14 +38,18 @@ textarea {
   padding: 1rem 0;
   @include phone-only {
     padding: 0.5rem 0;
+    &::placeholder {
+      font-size: 1rem;
+    }
   }
   &::placeholder {
     color: #575656;
   }
 }
+
 textarea {
   overflow: auto;
-  min-height: 8rem;
+  min-height: 6rem;
   max-height: 20rem;
   resize: none;
   outline: 0;
@@ -56,10 +62,4 @@ form {
   div {
     margin: 3vh 0;
   }
-}
-
-button span {
-  transform: rotate(-35deg);
-  vertical-align: middle;
-  margin: -10px 0 0 5px;
 }

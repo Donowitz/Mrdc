@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
 import { MediaDto } from './../../../../../Back/src/shared/models/dto/mediasDto';
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { MediaService } from 'src/app/core/backend/services/media.service';
 import { UserService } from 'src/app/core/backend/services/user.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -15,6 +15,16 @@ export class MediasComponent implements OnInit {
   articles: MediaDto[];
   mediaForm: FormGroup;
   toggleMediaForm: boolean = false;
+  justifyContent: string = 'center';
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    if (event.target.innerWidth < 600) {
+      this.justifyContent = 'flex-start';
+    } else {
+      this.justifyContent = 'center';
+    }
+  }
 
   constructor(
     private readonly mediaService: MediaService,
@@ -25,6 +35,12 @@ export class MediasComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    if (window.outerWidth < 600) {
+      this.justifyContent = 'flex-start';
+    } else {
+      this.justifyContent = 'center';
+    }
+
     this.mediaService.getAllMedias().subscribe((res) => {
       this.articles = res;
     });

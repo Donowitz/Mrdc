@@ -34,6 +34,16 @@ export class TeamService {
     return this.api.put(`${this.apiController}/${teamId}`, partialTeam);
   }
 
+  uploadImage(file: any, teamId: string, type: string = '') {
+    let params = new HttpParams();
+    params = params.append('type', type);
+    const formData: FormData = new FormData();
+    formData.append('img', file);
+    return this.api.post(`${this.apiController}/team/${teamId}`, formData, {
+      params,
+    });
+  }
+
   deleteTeam(teamId: string): Observable<any> {
     return this.api.delete(`${this.apiController}/${teamId}`);
   }

@@ -1,15 +1,5 @@
 import { TrainingDto } from './../shared/models/dto/trainingsDto';
-import {
-  Controller,
-  Get,
-  Param,
-  Post,
-  Body,
-  Put,
-  Delete,
-  Query,
-} from '@nestjs/common';
-import { UpdateResult } from 'typeorm';
+import { Controller, Get, Param, Body, Put } from '@nestjs/common';
 import { TrainingService } from './training.service';
 import { Training } from './training.entity';
 

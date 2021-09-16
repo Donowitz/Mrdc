@@ -1,111 +1,114 @@
 <page-layout
   [pageContent]="contactContent"
   imgSrc="./../../../assets/contact.jpg"
+  justifyContent="center"
 >
   <ng-template #contactContent>
-    <div class="flex">
-      <article>
-        <h1>Hello.</h1>
-        <div class="socials">
-          <a href="mailto:marseille.roller.derby.club@gmail.com"
-            ><img
-              src="./../../../assets/contact-socials/gmail.png"
-              alt="icon gmail"
-          /></a>
-          <a href="https://www.facebook.com/marseillerollerderby/"
-            ><img
-              src="./../../../assets/contact-socials/messenger.png"
-              alt="icon messenger"
-          /></a>
-          <a href="https://www.instagram.com/marseillerollerderbyclub/"
-            ><img
-              src="./../../../assets/contact-socials/insta.png"
-              alt="icon instagram"
-          /></a>
-        </div>
-        <form (ngSubmit)="sendMessage(f)" #f="ngForm" [formGroup]="form">
-          <div>
-            <input
-              formControlName="name"
-              class="form-control"
-              placeholder="Derby Name *"
-              required
-            />
-            <ng-container
-              *ngIf="
-                form.get('name').invalid &&
-                (form.get('name').dirty || form.get('name').touched)
-              "
-            >
-              <p class="error-msg" *ngIf="form.get('name').errors.required">
-                <nb-icon icon="alert-circle-outline"></nb-icon> Et c'est quoi
-                votre petit nom ?
-              </p>
-              <p class="error-msg" *ngIf="form.get('name').errors.minlength">
-                <nb-icon icon="alert-circle-outline"></nb-icon> Le derby name
-                doit contenir au moins 3 caractères.
-              </p>
-            </ng-container>
-          </div>
-          <div>
-            <input
-              pattern=".+@.+\..+"
-              formControlName="email"
-              class="form-control"
-              placeholder="Email *"
-              required
-            />
-            <ng-container
-              *ngIf="
-                form.get('email').invalid &&
-                (form.get('email').dirty || form.get('email').touched)
-              "
-            >
-              <p class="error-msg" *ngIf="form.get('email').errors.required">
-                <nb-icon icon="alert-circle-outline"></nb-icon> Ton email est
-                requis.
-              </p>
-              <p class="error-msg" *ngIf="form.get('email').errors?.pattern">
-                <nb-icon icon="alert-circle-outline"></nb-icon> L'email n'est
-                pas valide.
-              </p>
-            </ng-container>
-          </div>
-          <div>
-            <textarea
-              formControlName="message"
-              class="form-control"
-              placeholder="Vos mots doux *"
-              required
-              (input)="auto_grow($event)"
-            ></textarea>
-            <ng-container
-              *ngIf="
-                form.get('message').invalid &&
-                (form.get('message').dirty || form.get('name').touched)
-              "
-            >
-              <p class="error-msg" *ngIf="form.get('message').errors.required">
-                <nb-icon icon="alert-circle-outline"></nb-icon> Tu n'as rien à
-                nous dire ?
-              </p>
-              <p class="error-msg" *ngIf="form.get('message').errors.minlength">
-                <nb-icon icon="alert-circle-outline"></nb-icon> Ton petit mot
-                est trop court...
-              </p>
-            </ng-container>
-          </div>
-          <button
-            nbButton
-            type="submit"
-            [disabled]="!isFormValid"
-            id="submit"
-            status="primary"
+    <article>
+      <h1>Hello.</h1>
+      <div class="socials">
+        <a href="mailto:marseille.roller.derby.club@gmail.com"
+          ><img
+            src="./../../../assets/contact-socials/gmail.png"
+            alt="icon gmail"
+        /></a>
+        <a href="https://www.facebook.com/marseillerollerderby/"
+          ><img
+            src="./../../../assets/contact-socials/messenger.png"
+            alt="icon messenger"
+        /></a>
+        <a href="https://www.instagram.com/marseillerollerderbyclub/"
+          ><img
+            src="./../../../assets/contact-socials/insta.png"
+            alt="icon instagram"
+        /></a>
+      </div>
+      <!-- formulaire -->
+      <form
+        action="https://mailThis.to/marseille.roller.derby.club@gmail.com"
+        [formGroup]="form"
+      >
+        <div>
+          <input
+            formControlName="name"
+            class="form-control"
+            placeholder="Derby Name *"
+            required
+          />
+          <ng-container
+            *ngIf="
+              form.get('name').invalid &&
+              (form.get('name').dirty || form.get('name').touched)
+            "
           >
-            Go ! <nb-icon icon="paper-plane-outline"></nb-icon>
-          </button>
-        </form>
-      </article>
-    </div>
+            <p class="error-msg" *ngIf="form.get('name').errors.required">
+              <nb-icon icon="alert-circle-outline"></nb-icon> Et c'est quoi
+              votre petit nom ?
+            </p>
+            <p class="error-msg" *ngIf="form.get('name').errors.minlength">
+              <nb-icon icon="alert-circle-outline"></nb-icon> Le derby name doit
+              contenir au moins 3 caractères.
+            </p>
+          </ng-container>
+        </div>
+        <div>
+          <input
+            pattern=".+@.+\..+"
+            formControlName="email"
+            class="form-control"
+            placeholder="Email *"
+            required
+          />
+          <ng-container
+            *ngIf="
+              form.get('email').invalid &&
+              (form.get('email').dirty || form.get('email').touched)
+            "
+          >
+            <p class="error-msg" *ngIf="form.get('email').errors.required">
+              <nb-icon icon="alert-circle-outline"></nb-icon> Ton email est
+              requis.
+            </p>
+            <p class="error-msg" *ngIf="form.get('email').errors?.pattern">
+              <nb-icon icon="alert-circle-outline"></nb-icon> L'email n'est pas
+              valide.
+            </p>
+          </ng-container>
+        </div>
+        <div>
+          <textarea
+            formControlName="message"
+            class="form-control"
+            placeholder="Vos mots doux *"
+            required
+            (input)="auto_grow($event)"
+          ></textarea>
+          <ng-container
+            *ngIf="
+              form.get('message').invalid &&
+              (form.get('message').dirty || form.get('name').touched)
+            "
+          >
+            <p class="error-msg" *ngIf="form.get('message').errors.required">
+              <nb-icon icon="alert-circle-outline"></nb-icon> Tu n'as rien à
+              nous dire ?
+            </p>
+            <p class="error-msg" *ngIf="form.get('message').errors.minlength">
+              <nb-icon icon="alert-circle-outline"></nb-icon> Ton petit mot est
+              trop court...
+            </p>
+          </ng-container>
+        </div>
+        <button
+          nbButton
+          type="submit"
+          [disabled]="!form.valid"
+          id="submit"
+          status="primary"
+        >
+          Go ! <nb-icon icon="paper-plane-outline"></nb-icon>
+        </button>
+      </form>
+    </article>
   </ng-template>
 </page-layout>

@@ -13,6 +13,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BackendModule } from '../shared/services/backend.module';
 import { TeamDialogComponent } from './teams/team-dialog/team-dialog.component';
+import { OverlayContainer } from '@angular/cdk/overlay';
+// import { TooltipModule } from 'ng2-tooltip-directive';
 
 @NgModule({
   imports: [
@@ -22,6 +24,7 @@ import { TeamDialogComponent } from './teams/team-dialog/team-dialog.component';
     ReactiveFormsModule,
     BackendModule,
     NebularModule,
+    // TooltipModule,
   ],
   exports: [],
   declarations: [

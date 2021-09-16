@@ -1,6 +1,6 @@
 <ul>
   <li *ngFor="let item of menu" (click)="onClick($event)">
-    <a href="{{ route + '#' + item.ancre }}">
+    <a [routerLink]="[route]" [fragment]="item.ancre">
       <svg
         width="16"
         height="16"
@@ -9,7 +9,7 @@
       >
         <circle cx="8" cy="8" r="5" id="{{ item.ancre }}-circle" />
       </svg>
-      <p>{{ item.nom }}</p>
+      <p id="{{ item.ancre }}">{{ item.nom }}</p>
     </a>
   </li>
 </ul>

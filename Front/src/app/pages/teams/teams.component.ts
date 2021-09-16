@@ -50,10 +50,14 @@ export class TeamsComponent implements OnInit {
       this.teams = res.filter((team) => {
         // Set ancres
         let ancre = team.teamName.replace(' ', '-').toLowerCase();
-        this.equipeMenu.push({ nom: team.teamName, ancre: ancre });
-        if (this.equipeMenu.length === res.length) {
-          this.lastAncre = this.equipeMenu[res.length - 1].ancre;
+
+        if (team.teamName != 'Newbee') {
+          this.equipeMenu.push({ nom: team.teamName, ancre: ancre });
+          if (this.equipeMenu.length === res.length) {
+            this.lastAncre = this.equipeMenu[res.length - 1].ancre;
+          }
         }
+
         // map result depending on logged or not
         if (this.userService.connectedUser) {
           return team.teamName != 'Newbee';

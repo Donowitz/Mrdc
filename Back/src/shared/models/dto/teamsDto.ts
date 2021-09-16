@@ -5,8 +5,8 @@ export class TeamDto {
   public id: string;
   public teamName: string;
   public teamStory: string;
-  //public teamLogo: string;
-  // public teamPicture: string;
+  public teamLogo: string;
+  public teamPicture: string;
   public order: number;
   public isActiveTeam: boolean;
   public flatTrackUrl: string;

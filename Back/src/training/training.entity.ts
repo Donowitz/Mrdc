@@ -24,7 +24,9 @@ export class Training {
   })
   public trainingTime: string;
 
-  @ManyToMany(() => Team, (team) => team.trainings)
+  @ManyToMany(() => Team, (team) => team.trainings, {
+    cascade: true,
+  })
   @JoinTable()
   public teams: Team[];
 }

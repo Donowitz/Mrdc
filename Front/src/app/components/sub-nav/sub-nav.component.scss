@@ -1,30 +1,36 @@
 ul {
   list-style: none;
-  position: absolute;
+  position: fixed;
   top: 50%;
   transform: translateY(-50%);
   right: 2rem;
   z-index: 1;
 }
+
 svg {
   float: right;
 }
+
 li:first-of-type circle {
   opacity: 1;
 }
+
 li:not(:first-of-type) circle {
   opacity: 0.3;
 }
+
 li a {
   text-decoration: none;
   p {
     visibility: hidden;
-    width: 8rem;
+    width: 9rem;
     text-align: right;
     padding-right: 1.5rem;
     font-weight: 300;
+    margin: 0.5rem 0;
   }
 }
+
 li:hover {
   a p {
     visibility: visible;

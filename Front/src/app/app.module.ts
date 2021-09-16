@@ -4,6 +4,7 @@ import { PageModule } from './pages/pages.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { AuthModule } from './core/auth/auth.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,15 +12,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { NebularModule } from './shared/nebular.module';
 import { HttpClientModule } from '@angular/common/http';
-
-import { faFacebookF } from '@fortawesome/free-brands-svg-icons';
-import { fas } from '@fortawesome/free-solid-svg-icons';
-import {
-  NbAuthJWTToken,
-  NbAuthModule,
-  NbPasswordAuthStrategy,
-} from '@nebular/auth';
-import { AuthModule } from './core/auth/auth.module';
+import { OverlayContainer } from '@angular/cdk/overlay';
+// import { TooltipModule } from 'ng2-tooltip-directive';
 
 @NgModule({
   declarations: [AppComponent],
@@ -35,8 +29,9 @@ import { AuthModule } from './core/auth/auth.module';
     NebularModule,
     FontAwesomeModule,
     AuthModule,
+    // TooltipModule,
   ],
-  providers: [],
+  providers: [{ provide: OverlayContainer }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

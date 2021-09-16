@@ -1,13 +1,18 @@
 @import "./mixin.scss";
 @import "../../../themes.scss";
 
+// Textes
 h1 {
   text-transform: uppercase;
   margin: 0;
+  @include tablet-landscape {
+    font-size: 1.7rem;
+    margin-top: 1rem;
+  }
 }
+
 h3 {
   text-align: center;
-  //margin: 0.2rem 0;
 }
 
 a {
@@ -20,15 +25,38 @@ a {
   }
 }
 
+.error-msg {
+  color: #ba2020;
+  font-style: italic;
+  font-size: 1rem;
+}
+
 .white-text {
   color: #fff;
+}
+
+// Cta
+.add-button {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 4;
+}
+
+@include phone-only {
+  [nbButton].size-medium {
+    font-size: 1rem;
+  }
+}
+
+// Structure
+section div > article {
+  padding: 0 3vw;
 }
 
 .flex {
   display: flex;
   align-items: center;
-  height: 100%;
-  padding: 0 3vw;
   overflow-x: hidden;
   @include tablet-portrait {
     align-items: flex-start;
@@ -42,20 +70,16 @@ a {
   padding: 0 1rem;
 }
 
-.error-msg {
-  color: #ba2020;
-  font-style: italic;
-  font-size: 1rem;
-}
-
-.add-button {
+section {
   position: absolute;
-  bottom: 0;
+  overflow-x: hidden;
+  height: 100%;
   width: 100%;
-  z-index: 20;
+  top: 0;
+  left: 0;
 }
 
-section.slide {
+.slide {
   height: 85vh;
   display: block;
   overflow-y: scroll;
@@ -105,7 +129,7 @@ section.slide {
       &.team-info {
         height: 40vh;
         margin-top: -5rem;
-        z-index: 4;
+        z-index: 3;
         display: flex;
         align-items: center;
 

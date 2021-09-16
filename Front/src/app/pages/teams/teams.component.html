@@ -6,7 +6,8 @@
       class="add-button"
       status="primary"
       shape="rectangle"
-      nbTooltip="Ajouter une équipe"
+      tooltip="Ajouter une équipe"
+      placement="top"
     >
       <nb-icon icon="plus-outline"></nb-icon>
     </button>
@@ -15,17 +16,14 @@
   <sub-nav
     [menu]="equipeMenu"
     [route]="'/nos-equipes'"
-    [elementNumber]="teams.length"
+    [menuLength]="teams.length"
   ></sub-nav>
   <article
     id="{{ equipeMenu[i].ancre }}"
     *ngFor="let team of teams; let i = index"
   >
     <div class="team-img">
-      <img
-        [src]="'./../../../assets/equipes/' + equipeMenu[i].ancre + '.jpg'"
-        [alt]="team.teamName"
-      />
+      <img [src]="team.teamPicture" [alt]="team.teamName" />
     </div>
     <div class="team-info">
       <div class="blue-background">
@@ -38,7 +36,8 @@
             shape="semi-round"
             size="large"
             class="edit-team"
-            nbTooltip="Éditer l'équipe"
+            tooltip="Éditer l'équipe"
+            placement="top"
           >
             <nb-icon icon="edit-2-outline"></nb-icon>
           </button>
@@ -62,10 +61,7 @@
           >
         </div>
       </div>
-      <img
-        [src]="'./../../../assets/equipes/logo_' + equipeMenu[i].ancre + '.png'"
-        [alt]="'Logo' + team.teamName"
-      />
+      <img [src]="team.teamLogo" [alt]="'Logo ' + team.teamName" />
     </div>
   </article>
 </section>

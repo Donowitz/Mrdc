@@ -22,31 +22,6 @@ export class ContactComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       message: ['', [Validators.required, Validators.minLength(3)]],
     });
-    this.form.statusChanges.subscribe((value) => {
-      if (value === 'VALID') {
-        this.isFormValid = true;
-      }
-    });
-  }
-
-  sendMessage(form: NgForm) {
-    //console.log(form.value);
-    //[TODO]
-    if (form.value.name && form.value.email && form.value.message) {
-      console.log(form.value);
-      this.contactService.postMessage(form.value).subscribe(
-        (response) => {
-          location.href = 'https://mailthis.to/confirm';
-          console.log(response);
-        },
-        (error) => {
-          console.warn(error.responseText);
-          console.log({ error });
-        }
-      );
-    } else {
-      this.isFormValid = false;
-    }
   }
 
   auto_grow(event) {

@@ -1,16 +1,15 @@
 @import "./../../shared/scss/mixin.scss";
 
 section {
-  position: relative;
   display: flex;
-  height: 100vh;
   flex-direction: row;
-  overflow-x: hidden;
+
   @include tablet-portrait {
     flex-direction: column;
   }
 
-  div.bg-img {
+  // Left picture block
+  > div:first-child {
     background-position: top center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -25,7 +24,8 @@ section {
     }
   }
 
-  div#container {
+  // Right content block
+  > div:nth-child(2) {
     width: 45%;
     height: 100%;
     overflow: auto;

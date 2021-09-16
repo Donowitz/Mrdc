@@ -1,5 +1,10 @@
-<page-layout [pageContent]="mediasContent" imgSrc="./../../../assets/media.jpg">
+<page-layout
+  [pageContent]="mediasContent"
+  imgSrc="./../../../assets/media.jpg"
+  [justifyContent]="justifyContent"
+>
   <ng-template #mediasContent>
+    <!-- Add Media overlay -->
     <div class="overlay" [ngStyle]="{ height: toggleMediaForm ? '100%' : '0' }">
       <form [formGroup]="mediaForm">
         <div>
@@ -106,6 +111,7 @@
         Créer
       </button>
     </div>
+    <!--CTA Add Media-->
     <ng-container *ngIf="userService.connectedUser">
       <button
         nbButton
@@ -113,34 +119,34 @@
         class="add-button"
         status="primary"
         shape="rectangle"
-        nbTooltip="Ajouter un article"
+        tooltip="Ajouter un article"
+        placement="top"
       >
         <nb-icon icon="plus-outline"></nb-icon>
       </button>
     </ng-container>
-    <div class="flex">
-      <article>
-        <h1>ils parlent <br />de nous</h1>
-        <button
-          status="primary"
-          nbButton
-          (click)="
-            router.navigateByUrl(
-              'https://www.youtube.com/watch?v=AuEZ95xbdvk&list=PLiOJwCfQxioUEzKMtN2uijLqoNUl1vjBd'
-            )
-          "
-        >
-          En vidéo
-        </button>
-        <aside>
-          <div *ngFor="let article of articles" class="media">
-            <h3>{{ article.magazine }} :</h3>
-            <a href="{{ article.url }}" target="_blank">{{
-              article.articleTitle
-            }}</a>
-          </div>
-        </aside>
-      </article>
-    </div>
+    <!-- Page content -->
+    <article>
+      <h1>ils parlent <br />de nous</h1>
+      <button
+        status="primary"
+        nbButton
+        (click)="
+          router.navigateByUrl(
+            'https://www.youtube.com/watch?v=AuEZ95xbdvk&list=PLiOJwCfQxioUEzKMtN2uijLqoNUl1vjBd'
+          )
+        "
+      >
+        En vidéo
+      </button>
+      <div>
+        <div *ngFor="let article of articles" class="media">
+          <h3>{{ article.magazine }} :</h3>
+          <a href="{{ article.url }}" target="_blank">{{
+            article.articleTitle
+          }}</a>
+        </div>
+      </div>
+    </article>
   </ng-template>
 </page-layout>

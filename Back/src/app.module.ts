@@ -12,6 +12,8 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { User } from './user/user.entity';
 import { TrainingModule } from './training/training.module';
 import { Training } from './training/training.entity';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 
 @Module({
   imports: [
@@ -34,6 +36,14 @@ import { Training } from './training/training.entity';
     ConfigModule.forRoot({
       isGlobal: true,
       envFilePath: `${process.env.NODE_ENV || 'development'}.env`,
+    }),
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', '..', 'Files/teams'),
+      serveRoot: '/teams',
+      serveStaticOptions: {
+        index: false,
+      },
+      exclude: ['/api*'],
     }),
     TeamModule,
     UserModule,

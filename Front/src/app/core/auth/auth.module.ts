@@ -43,10 +43,6 @@ import { AuthRoutingModule } from './auth-routing.module';
             method: 'post',
             requireValidToken: false,
             endpoint: 'login',
-            redirect: {
-              success: '/nos-equipes',
-              failure: null,
-            },
           },
         }),
       ],

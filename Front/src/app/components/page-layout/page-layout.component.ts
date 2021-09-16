@@ -1,27 +1,20 @@
 import {
   Component,
   Input,
-  Renderer2,
   TemplateRef,
-  OnInit,
   ViewEncapsulation,
-  AfterViewInit,
 } from '@angular/core';
 
 @Component({
   selector: 'page-layout',
   templateUrl: `./page-layout.component.html`,
-  styleUrls: ['./page-layout.component.scss'],
+  styleUrls: ['./page-layout.component.scss', '../../shared/scss/global.scss'],
   encapsulation: ViewEncapsulation.None,
 })
-export class PageLayoutComponent implements OnInit {
+export class PageLayoutComponent {
   @Input() pageContent: TemplateRef<{ item: any }>;
   @Input() imgSrc: string;
+  @Input() justifyContent: string;
 
-  constructor(private renderer: Renderer2) {}
-
-  ngOnInit(): void {
-    // let imgBox = document.getElementById('image');
-    // this.renderer.setStyle(imgBox, 'background-image', `url(${this.imgSrc})`);
-  }
+  constructor() {}
 }

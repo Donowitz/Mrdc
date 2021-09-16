@@ -1,8 +1,9 @@
+import { Team } from 'src/team/team.entity';
 import { TrainingDto } from './../shared/models/dto/trainingsDto';
 import { Training } from 'src/training/training.entity';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository, UpdateResult } from 'typeorm';
+import { Repository } from 'typeorm';
 import { TeamService } from 'src/team/team.service';
 
 @Injectable()
@@ -24,32 +25,38 @@ export class TrainingService {
   }
 
   async updateTraining(id: string, partialTraining: Partial<TrainingDto>) {
+    let updatedTraining = { ...partialTraining };
     const training = await this.trainingRepository.findOne(id, {
       relations: ['teams'],
     });
 
-    training.trainingDay = partialTraining.trainingDay;
-    training.trainingTime = partialTraining.trainingTime;
+    if (partialTraining.teams) {
+      const removeArray = training.teams.filter(
+        (oldTeam) => partialTraining.teams.indexOf(oldTeam) == -1,
+      );
 
-    if ('teams' in partialTraining) {
-      await training.teams.forEach((t) => {
-        this.trainingRepository
+      const addArray = partialTraining.teams.filter(
+        (newTeam) => training.teams.indexOf(newTeam as Team) == -1,
+      );
+
+      await removeArray.forEach(async (teamToRemove) => {
+        await this.trainingRepository
           .createQueryBuilder()
           .relation(Training, 'teams')
           .of(id)
-          .remove(t);
+          .remove(teamToRemove);
       });
 
-      await partialTraining.teams.forEach((t) => {
-        this.trainingRepository
+      await partialTraining.teams.forEach(async (teamToAdd) => {
+        await this.trainingRepository
           .createQueryBuilder()
           .relation(Training, 'teams')
           .of(id)
-          .add(t);
+          .add(teamToAdd);
       });
-      delete training.teams;
+      delete updatedTraining.teams;
     }
 
-    return this.trainingRepository.save(training);
+    return this.trainingRepository.save(updatedTraining);
   }
 }

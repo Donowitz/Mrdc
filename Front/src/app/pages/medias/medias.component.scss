@@ -1,16 +1,10 @@
 @import "./../../app.component.scss";
 
 article {
-  width: 100%;
-  @include tablet-portrait {
-    padding-top: 5vh;
-  }
-  @include phone-only {
-    padding: 0;
-  }
+  padding-right: 0;
 }
 
-aside {
+article > div {
   overflow: auto;
   max-height: 25rem;
   margin-top: 2rem;
@@ -20,7 +14,7 @@ aside {
     padding-bottom: 4vh;
   }
 
-  div {
+  > div {
     margin: 2rem 1.5rem 2rem 0;
     &:first-of-type {
       margin-top: 0;
@@ -32,9 +26,11 @@ aside {
 
   h3 {
     text-align: left;
+    margin: 0 0 0.5rem;
   }
 }
 
+// Add media
 .overlay {
   position: absolute;
   bottom: 0;
@@ -46,6 +42,10 @@ aside {
   flex-direction: column;
   overflow: hidden;
   transition: height 1s;
+  @include phone-only {
+    justify-content: flex-start;
+  }
+
   form {
     width: 70%;
     div {
